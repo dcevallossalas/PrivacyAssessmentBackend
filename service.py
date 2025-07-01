@@ -2,7 +2,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/test1", methods=["GET"])
+@app.route("/test9", methods=["GET"])
 def test():
     return "Api working!"
 
