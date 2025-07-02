@@ -26,8 +26,8 @@ def loadnormative(normative):
 
         mycursor = mydb.cursor()
 
-         mycursor.execute("SELECT ID FROM normatives WHERE name = %s AND active = 1",(name,))
-         q1 = mycursor.fetchone()
+        mycursor.execute("SELECT ID FROM normatives WHERE name = %s AND active = 1",(name,))
+        q1 = mycursor.fetchone()
 
         if q1 is not None:
             return jsonify({"code": -1, "message": "Error: A register with the provided name already exists"})
