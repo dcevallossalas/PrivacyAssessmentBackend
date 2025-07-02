@@ -11,7 +11,7 @@ app = Flask(__name__)
 def loadnormative(normative):
     try:
         data = request.form.get("json")
-        payload = json.dumps(data)
+        payload = json.loads(data)
         name = payload["name"]
         extension = payload["extension"]
         myfile = request.files.get("file")
@@ -26,17 +26,18 @@ def loadnormative(normative):
 
         mycursor = mydb.cursor()
 
-        id = mycursor.execute("SELECT ID FROM normatives WHERE name = %s AND active = 1",(name)).fetchone()
+         mycursor.execute("SELECT ID FROM normatives WHERE name = %s AND active = 1",(name,))
+         q1 = mycursor.fetchone()
 
-        if id is not None:
+        if q1 is not None:
             return jsonify({"code": -1, "message": "Error: A register with the provided name already exists"})
         
-        id = mycursor.execute("SELECT MAX(ID) FROM normatives").fetchone()
-
-        if id is not None:
-            id = id[0] + 1
-        else:
-            id = 1
+        mycursor.execute("SELECT MAX(ID) FROM normatives")
+        q2 = mycursor.fetchone()
+        id = 1
+        if q2 is not None:
+            if q2[0] is not None:
+                id = q2[0] + 1
 
         mycursor.execute("INSERT INTO normatives (id, name, active) VALUES (%s, %s, %s)", (id, name, 1))
         mydb.commit()
