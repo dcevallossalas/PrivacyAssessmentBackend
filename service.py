@@ -8,7 +8,7 @@ import os
 app = Flask(__name__)
 
 @app.route("/loadnormative", methods=["POST"])
-def loadnormative(normative):
+def loadnormative():
     try:
         data = request.form.get("json")
         payload = json.loads(data)
@@ -57,7 +57,7 @@ def loadnormative(normative):
             os.mkdir(folder_normative_dir)
 
         myfile.save(os.path.join(folder_normative_dir,name+extension))
-        return {"code": 0, "message": ""}
+        return {"code": 0, "message": "Process executed successfully"}
     except mysql.connector.Error as error:
         message = ("Failed in database process. Error description: {}".format(error))
         return jsonify({"code": -1, "message": message})
