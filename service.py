@@ -7,6 +7,40 @@ import os
 
 app = Flask(__name__)
 
+@app.route("/getdocuments/<type>", methods=["GET"])
+def getdocuments(type):
+    try:
+         mydb = mysql.connector.connect(
+            host="192.168.1.86",
+            user="assessment",
+            password="12345678",
+            database="assessment"
+        )
+
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT id, name, alias FROM normatives WHERE active = 1 ORDER BY id DESC",(name,))
+        q1 = mycursor.fetchall()
+
+        Documents = dict()
+        Documents["code"] = 0
+        Documents["message"] = "OK"
+        documents = list()
+
+        for document in q1:
+            documents.add({"id": document[0], "name": document[1], "alias": document[2]})
+
+        return Documents
+    except mysql.connector.Error as error:
+        message = ("Failed in database process. Error description: {}".format(error))
+        return {"code": -1, "message": message}
+    except Exception as e:
+        message = "Error in process. Detail of error: "
+        return {"code": -1, "message": message}
+    finally:
+        if mydb is not None and mydb.is_connected():
+            mydb.close()
+
+
 @app.route("/loadnormative", methods=["POST"])
 def loadnormative():
     try:
