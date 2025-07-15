@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route("/getdocuments/<type>", methods=["GET"])
 def getdocuments(type):
     try:
-         mydb = mysql.connector.connect(
+        mydb = mysql.connector.connect(
             host="192.168.1.86",
             user="assessment",
             password="12345678",
@@ -31,10 +31,10 @@ def getdocuments(type):
 
         return Documents
     except mysql.connector.Error as error:
-        message = ("Failed in database process. Error description: {}".format(error))
+        message = "Failed in database process. Error description: {}".format(error)
         return {"code": -1, "message": message}
-    except Exception as e:
-        message = "Error in process. Detail of error: "
+    except Exception as error:
+        message = "Error in process. Detail of error: {}".format(error)
         return {"code": -1, "message": message}
     finally:
         if mydb is not None and mydb.is_connected():
