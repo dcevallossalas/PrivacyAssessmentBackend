@@ -7,6 +7,81 @@ import os
 
 app = Flask(__name__)
 
+@app.route("/deletedocument/<type>/<id>", methods=["DELETE"])
+def deletedocument(type, id):
+try:
+        mydb = mysql.connector.connect(
+            host="192.168.1.86",
+            user="assessment",
+            password="12345678",
+            database="assessment"
+        )
+
+        mycursor = mydb.cursor()
+        mycursor.execute("UPDATE normatives SET active = 0 WHERE id = %s AND active = 1",(id,))
+        mycursor.execute("UPDATE principles SET active = 0 WHERE normative_id = %s AND active = 1",(id,))
+        mydb.commit()
+        
+        return {"code": 0, "message": "OK"}
+    except mysql.connector.Error as error:
+        message = "Failed in database process. Error description: {}".format(error)
+        return {"code": -1, "message": message}
+    except Exception as error:
+        message = "Error in process. Detail of error: {}".format(error)
+        return {"code": -1, "message": message}
+    finally:
+        if mydb is not None and mydb.is_connected():
+            mydb.close()
+
+@app.route("/getdocument/<type>/<id>", methods=["GET"])
+def getdocument(type, id):
+    try:
+        mydb = mysql.connector.connect(
+            host="192.168.1.86",
+            user="assessment",
+            password="12345678",
+            database="assessment"
+        )
+
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT id, name, alias, description FROM normatives WHERE id = %s AND active = 1",(id,))
+        q1 = mycursor.fetchone()
+
+        Document = dict()
+
+        if q1 is not None:
+            mycursor.execute("SELECT principle, category_from, category_to FROM principles WHERE id_normative = %s AND active = 1 ORDER BY category_from,category_to,principle",(id,))
+            q2 = mycursor.fetchall()
+
+            if q2 is not None and len(q2) > 0:
+                Document["id"], Document["name"], Document["alias"], Document["description"] = q1
+                principles = list()
+                for q in q2:
+                    principle = new dict()
+                    principle["principle"], princple["category_from"], princple["category_to"] = q  
+                    principles.append(principle)
+                Document["principles"] = principles
+                Document["code"] = 0
+                Document["message"] = "OK"
+            else:
+                Document["code"] = -1
+                Document["message"] = "Detail of principles not found"
+        else:
+            Document["code"] = -1
+            Document["message"] = "Register not found"
+
+        return Document
+    except mysql.connector.Error as error:
+        message = "Failed in database process. Error description: {}".format(error)
+        return {"code": -1, "message": message}
+    except Exception as error:
+        message = "Error in process. Detail of error: {}".format(error)
+        return {"code": -1, "message": message}
+    finally:
+        if mydb is not None and mydb.is_connected():
+            mydb.close()
+
+
 @app.route("/getdocuments/<type>", methods=["GET"])
 def getdocuments(type):
     try:
@@ -18,7 +93,7 @@ def getdocuments(type):
         )
 
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT id, name, alias FROM normatives WHERE active = 1 ORDER BY id DESC",(name,))
+        mycursor.execute("SELECT id, name, alias FROM normatives WHERE active = 1 ORDER BY id DESC")
         q1 = mycursor.fetchall()
 
         Documents = dict()
@@ -29,6 +104,7 @@ def getdocuments(type):
         for document in q1:
             documents.add({"id": document[0], "name": document[1], "alias": document[2]})
 
+        Documents["documents"] = documents
         return Documents
     except mysql.connector.Error as error:
         message = "Failed in database process. Error description: {}".format(error)
