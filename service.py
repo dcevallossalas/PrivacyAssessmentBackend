@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 
-@app.route("/deletedocument/<doctype>/<id>", methods=["DELETE"])
+@app.route("/deletedocument/<docType>/<id>", methods=["DELETE"])
 def deletedocument(docType:int, id:int):
     try:
         mydb = mysql.connector.connect(
@@ -33,7 +33,7 @@ def deletedocument(docType:int, id:int):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
-@app.route("/getdocument/<doctype>/<id>", methods=["GET"])
+@app.route("/getdocument/<docType>/<id>", methods=["GET"])
 def getdocument(docType:int, id:int):
     try:
         mydb = mysql.connector.connect(
@@ -82,7 +82,7 @@ def getdocument(docType:int, id:int):
             mydb.close()
 
 
-@app.route("/getdocuments/<doctype>", methods=["GET"])
+@app.route("/getdocuments/<docType>", methods=["GET"])
 def getdocuments(docType:int):
     try:
         mydb = mysql.connector.connect(
@@ -175,7 +175,7 @@ def createnormative():
         for principle in principles:
             mycursor.execute("INSERT INTO principles (id, id_normative, principle, category_from, category_to, active) VALUES (%s, %s, %s, %s, %s, %s)", (id_norm, id, principle["principle"], principle["category_from"], principle["category_to"], 1))
             id_norm = id_norm + 1
-            
+
         # Save file
         data_dir = os.path.join(os.getcwd(), "Data")
         normatives_dir = os.path.join(data_dir, "Normatives")
