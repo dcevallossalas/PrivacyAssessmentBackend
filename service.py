@@ -7,9 +7,9 @@ import os
 
 app = Flask(__name__)
 
-@app.route("/deletedocument/<type>/<id>", methods=["DELETE"])
-def deletedocument(type, id):
-try:
+@app.route("/deletedocument/<doctype>/<id>", methods=["DELETE"])
+def deletedocument(docType:int, id:int):
+    try:
         mydb = mysql.connector.connect(
             host="192.168.1.86",
             user="assessment",
@@ -19,7 +19,7 @@ try:
 
         mycursor = mydb.cursor()
         mycursor.execute("UPDATE normatives SET active = 0 WHERE id = %s AND active = 1",(id,))
-        mycursor.execute("UPDATE principles SET active = 0 WHERE normative_id = %s AND active = 1",(id,))
+        mycursor.execute("UPDATE principles SET active = 0 WHERE id_normative = %s AND active = 1",(id,))
         mydb.commit()
         
         return {"code": 0, "message": "OK"}
@@ -33,8 +33,8 @@ try:
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
-@app.route("/getdocument/<type>/<id>", methods=["GET"])
-def getdocument(type, id):
+@app.route("/getdocument/<doctype>/<id>", methods=["GET"])
+def getdocument(docType:int, id:int):
     try:
         mydb = mysql.connector.connect(
             host="192.168.1.86",
@@ -57,8 +57,8 @@ def getdocument(type, id):
                 Document["id"], Document["name"], Document["alias"], Document["description"] = q1
                 principles = list()
                 for q in q2:
-                    principle = new dict()
-                    principle["principle"], princple["category_from"], princple["category_to"] = q  
+                    principle = dict()
+                    principle["principle"], principle["category_from"], principle["category_to"] = q  
                     principles.append(principle)
                 Document["principles"] = principles
                 Document["code"] = 0
@@ -82,8 +82,8 @@ def getdocument(type, id):
             mydb.close()
 
 
-@app.route("/getdocuments/<type>", methods=["GET"])
-def getdocuments(type):
+@app.route("/getdocuments/<doctype>", methods=["GET"])
+def getdocuments(docType:int):
     try:
         mydb = mysql.connector.connect(
             host="192.168.1.86",
@@ -102,7 +102,7 @@ def getdocuments(type):
         documents = list()
 
         for document in q1:
-            documents.add({"id": document[0], "name": document[1], "alias": document[2]})
+            documents.append({"id": document[0], "name": document[1], "alias": document[2]})
 
         Documents["documents"] = documents
         return Documents
@@ -117,13 +117,20 @@ def getdocuments(type):
             mydb.close()
 
 
-@app.route("/loadnormative", methods=["POST"])
-def loadnormative():
+@app.route("/createnormative", methods=["POST"])
+def createnormative():
     try:
         data = request.form.get("json")
         payload = json.loads(data)
         name = payload["name"]
-        extension = payload["extension"]
+        alias = payload["alias"]
+        description = payload["description"]
+        docType = payload["docType"]
+        if docType == 0:
+            extension = ".txt"
+        else:
+            extension = ".pdf"
+
         myfile = request.files.get("file")
 
         # Save database
@@ -141,17 +148,34 @@ def loadnormative():
 
         if q1 is not None:
             return jsonify({"code": -1, "message": "Error: A register with the provided name already exists"})
+
+        mycursor.execute("SELECT ID FROM normatives WHERE alias = %s AND active = 1",(alias,))
+        q1 = mycursor.fetchone()
+
+        if q1 is not None:
+            return jsonify({"code": -1, "message": "Error: A register with the provided alias already exists"})
         
         mycursor.execute("SELECT MAX(ID) FROM normatives")
         q2 = mycursor.fetchone()
         id = 1
-        if q2 is not None:
-            if q2[0] is not None:
-                id = q2[0] + 1
+        if q2 is not None and q2[0] is not None:
+            id = q2[0] + 1
 
-        mycursor.execute("INSERT INTO normatives (id, name, active) VALUES (%s, %s, %s)", (id, name, 1))
-        mydb.commit()
+        mycursor.execute("INSERT INTO normatives (id, name, alias, description, active) VALUES (%s, %s, %s, %s, %s)", (id, name, alias, description, 1))
+        
+        # Principles
+        mycursor.execute("SELECT MAX(ID) FROM principles")
+        q3 = mycursor.fetchone()
+        id_norm = 1
+        if q3 is not None and q3[0] is not None:
+            id_norm = q3[0] + 1
 
+        principles = payload["principles"]
+        
+        for principle in principles:
+            mycursor.execute("INSERT INTO principles (id, id_normative, principle, category_from, category_to, active) VALUES (%s, %s, %s, %s, %s, %s)", (id_norm, id, principle["principle"], principle["category_from"], principle["category_to"], 1))
+            id_norm = id_norm + 1
+            
         # Save file
         data_dir = os.path.join(os.getcwd(), "Data")
         normatives_dir = os.path.join(data_dir, "Normatives")
@@ -166,7 +190,8 @@ def loadnormative():
         if not os.path.exists(folder_normative_dir):
             os.mkdir(folder_normative_dir)
 
-        myfile.save(os.path.join(folder_normative_dir,name+extension))
+        myfile.save(os.path.join(folder_normative_dir,alias+extension))
+        mydb.commit()
         return {"code": 0, "message": "Process executed successfully"}
     except mysql.connector.Error as error:
         message = ("Failed in database process. Error description: {}".format(error))
