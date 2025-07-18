@@ -7,19 +7,34 @@ import os
 
 app = Flask(__name__)
 
+with open("config.json", "r") as file:
+    config = json.load(file)
+
+host = config["host"]
+user = config["user"]
+password = config["password"]
+database1 = config["database1"]
+
 @app.route("/deletedocument/<docType>/<id>", methods=["DELETE"])
 def deletedocument(docType:int, id:int):
     try:
         mydb = mysql.connector.connect(
-            host="192.168.1.86",
-            user="assessment",
-            password="12345678",
-            database="assessment"
+            host=host,
+            user=user,
+            password=password,
+            database=database1
         )
 
         mycursor = mydb.cursor()
-        mycursor.execute("UPDATE normatives SET active = 0 WHERE id = %s AND active = 1",(id,))
-        mycursor.execute("UPDATE principles SET active = 0 WHERE id_normative = %s AND active = 1",(id,))
+
+        if docTYpe == 0:
+            mycursor.execute("UPDATE normatives SET active = 0 WHERE id = %s AND active = 1",(id,))
+            mycursor.execute("UPDATE principles SET active = 0 WHERE id_normative = %s AND active = 1",(id,))
+        elif docType == 1:
+            mycursor.execute("UPDATE laws SET active = 0 WHERE id = %s AND active = 1",(id,))
+        else:
+            return {"code": -1, "message": "Not valid document type"}
+        
         mydb.commit()
         
         return {"code": 0, "message": "OK"}
@@ -36,36 +51,48 @@ def deletedocument(docType:int, id:int):
 @app.route("/getdocument/<docType>/<id>", methods=["GET"])
 def getdocument(docType:int, id:int):
     try:
-        mydb = mysql.connector.connect(
-            host="192.168.1.86",
-            user="assessment",
-            password="12345678",
-            database="assessment"
+         mydb = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+            database=database1
         )
 
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT id, name, alias, description FROM normatives WHERE id = %s AND active = 1",(id,))
+
+        if docTYpe == 0:
+            mycursor.execute("SELECT id, name, alias, description FROM normatives WHERE id = %s AND active = 1",(id,))
+        elif docTYpe == 1:
+            mycursor.execute("SELECT id, name, alias, description FROM laws WHERE id = %s AND active = 1",(id,))
+        else:
+            return {"code": -1, "message": "Not valid document type"}
+
         q1 = mycursor.fetchone()
 
         Document = dict()
 
         if q1 is not None:
-            mycursor.execute("SELECT principle, category_from, category_to FROM principles WHERE id_normative = %s AND active = 1 ORDER BY category_from,category_to,principle",(id,))
-            q2 = mycursor.fetchall()
+            if docType == 0:
+                mycursor.execute("SELECT principle, category_from, category_to FROM principles WHERE id_normative = %s AND active = 1 ORDER BY category_from,category_to,principle",(id,))
+                q2 = mycursor.fetchall()
 
-            if q2 is not None and len(q2) > 0:
+                if q2 is not None and len(q2) > 0:
+                    Document["id"], Document["name"], Document["alias"], Document["description"] = q1
+                    principles = list()
+                    for q in q2:
+                        principle = dict()
+                        principle["principle"], principle["category_from"], principle["category_to"] = q  
+                        principles.append(principle)
+                    Document["principles"] = principles
+                    Document["code"] = 0
+                    Document["message"] = "OK"
+                else:
+                    Document["code"] = -1
+                    Document["message"] = "Detail of principles not found"
+            elif docType == 1:
                 Document["id"], Document["name"], Document["alias"], Document["description"] = q1
-                principles = list()
-                for q in q2:
-                    principle = dict()
-                    principle["principle"], principle["category_from"], principle["category_to"] = q  
-                    principles.append(principle)
-                Document["principles"] = principles
                 Document["code"] = 0
                 Document["message"] = "OK"
-            else:
-                Document["code"] = -1
-                Document["message"] = "Detail of principles not found"
         else:
             Document["code"] = -1
             Document["message"] = "Register not found"
@@ -86,14 +113,20 @@ def getdocument(docType:int, id:int):
 def getdocuments(docType:int):
     try:
         mydb = mysql.connector.connect(
-            host="192.168.1.86",
-            user="assessment",
-            password="12345678",
-            database="assessment"
+            host=host,
+            user=user,
+            password=password,
+            database=database1
         )
 
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT id, name, alias FROM normatives WHERE active = 1 ORDER BY id DESC")
+        if docType == 0:
+            mycursor.execute("SELECT id, name, alias FROM normatives WHERE active = 1 ORDER BY id DESC")
+        elif docTYpe == 1:
+            mycursor.execute("SELECT id, name, alias FROM laws WHERE active = 1 ORDER BY id DESC")
+        else:
+            return {"code": -1, "message": "Not valid document type"}
+
         q1 = mycursor.fetchall()
 
         Documents = dict()
@@ -126,59 +159,84 @@ def createnormative():
         alias = payload["alias"]
         description = payload["description"]
         docType = payload["docType"]
+
         if docType == 0:
             extension = ".txt"
-        else:
+        elif docType == 1:
             extension = ".pdf"
+        else:
+            return {"code": -1, "message": "Not valid document type"}
 
         myfile = request.files.get("file")
 
         # Save database
         mydb = mysql.connector.connect(
-            host="192.168.1.86",
-            user="assessment",
-            password="12345678",
-            database="assessment"
+            host=host,
+            user=user,
+            password=password,
+            database=database1
         )
 
         mycursor = mydb.cursor()
 
-        mycursor.execute("SELECT ID FROM normatives WHERE name = %s AND active = 1",(name,))
+        if docType == 0:
+            mycursor.execute("SELECT ID FROM normatives WHERE name = %s AND active = 1",(name,))
+        elif docType == 1:
+            mycursor.execute("SELECT ID FROM laws WHERE name = %s AND active = 1",(name,))
+
         q1 = mycursor.fetchone()
 
         if q1 is not None:
-            return jsonify({"code": -1, "message": "Error: A register with the provided name already exists"})
+            return {"code": -1, "message": "Error: A register with the provided name already exists"}
 
-        mycursor.execute("SELECT ID FROM normatives WHERE alias = %s AND active = 1",(alias,))
+        if docType == 0:
+            mycursor.execute("SELECT ID FROM normatives WHERE alias = %s AND active = 1",(alias,))
+        elif docType == 1:
+            mycursor.execute("SELECT ID FROM laws WHERE alias = %s AND active = 1",(alias,))
+
         q1 = mycursor.fetchone()
 
         if q1 is not None:
-            return jsonify({"code": -1, "message": "Error: A register with the provided alias already exists"})
+            return {"code": -1, "message": "Error: A register with the provided alias already exists"}
         
-        mycursor.execute("SELECT MAX(ID) FROM normatives")
+        if docType == 0:
+            mycursor.execute("SELECT MAX(id) FROM normatives")
+        elif docType == 1:
+            mycursor.execute("SELECT MAX(id) FROM laws")
+
         q2 = mycursor.fetchone()
+
         id = 1
         if q2 is not None and q2[0] is not None:
             id = q2[0] + 1
 
-        mycursor.execute("INSERT INTO normatives (id, name, alias, description, active) VALUES (%s, %s, %s, %s, %s)", (id, name, alias, description, 1))
+        if docType == 0:
+            mycursor.execute("INSERT INTO normatives (id, name, alias, description, active) VALUES (%s, %s, %s, %s, %s)", (id, name, alias, description, 1))
+        elif docType == 1:
+            mycursor.execute("INSERT INTO laws (id, name, alias, description, active) VALUES (%s, %s, %s, %s, %s)", (id, name, alias, description, 1))
         
         # Principles
-        mycursor.execute("SELECT MAX(ID) FROM principles")
-        q3 = mycursor.fetchone()
-        id_norm = 1
-        if q3 is not None and q3[0] is not None:
-            id_norm = q3[0] + 1
+        if docType == 0:
+            mycursor.execute("SELECT MAX(id) FROM principles")
+            q3 = mycursor.fetchone()
+            id_norm = 1
+            if q3 is not None and q3[0] is not None:
+                id_norm = q3[0] + 1
 
-        principles = payload["principles"]
-        
-        for principle in principles:
-            mycursor.execute("INSERT INTO principles (id, id_normative, principle, category_from, category_to, active) VALUES (%s, %s, %s, %s, %s, %s)", (id_norm, id, principle["principle"], principle["category_from"], principle["category_to"], 1))
-            id_norm = id_norm + 1
+            principles = payload["principles"]
+            
+            for principle in principles:
+                mycursor.execute("INSERT INTO principles (id, id_normative, principle, category_from, category_to, active) VALUES (%s, %s, %s, %s, %s, %s)", (id_norm, id, principle["principle"], principle["category_from"], principle["category_to"], 1))
+                id_norm = id_norm + 1
 
         # Save file
         data_dir = os.path.join(os.getcwd(), "Data")
-        normatives_dir = os.path.join(data_dir, "Normatives")
+
+        if docType == 0:
+            normatives_dir = os.path.join(data_dir, "Normatives")
+        elif docType == 1:
+            normatives_dir = os.path.join(data_dir, "Laws")
+
         folder_normative_dir = os.path.join(normatives_dir, str(id))
 
         if not os.path.exists(data_dir):
@@ -195,10 +253,10 @@ def createnormative():
         return {"code": 0, "message": "Process executed successfully"}
     except mysql.connector.Error as error:
         message = ("Failed in database process. Error description: {}".format(error))
-        return jsonify({"code": -1, "message": message})
+        return {"code": -1, "message": message}
     except Exception as e:
         message = "Error in process. Detail of error: "
-        return jsonify({"code": -1, "message": message})
+        return {"code": -1, "message": message}
     finally:
         if mydb is not None and mydb.is_connected():
             mydb.close()
