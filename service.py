@@ -15,8 +15,8 @@ user = config["user"]
 password = config["password"]
 database1 = config["database1"]
 
-@app.route("/deletedocument/<docType>/<id>", methods=["DELETE"])
-def deletedocument(docType:int, id:int):
+@app.route("/deletedocument/<int:docType>/<int:id>", methods=["DELETE"])
+def deletedocument(docType, id):
     try:
         mydb = mysql.connector.connect(
             host=host,
@@ -48,8 +48,8 @@ def deletedocument(docType:int, id:int):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
-@app.route("/getdocument/<docType>/<id>", methods=["GET"])
-def getdocument(docType:int, id:int):
+@app.route("/getdocument/<int:docType>/<int:id>", methods=["GET"])
+def getdocument(docType, id):
     try:
         mydb = mysql.connector.connect(
             host=host,
@@ -109,8 +109,8 @@ def getdocument(docType:int, id:int):
             mydb.close()
 
 
-@app.route("/getdocuments/<docType>", methods=["GET"])
-def getdocuments(docType:int):
+@app.route("/getdocuments/<int:docType>", methods=["GET"])
+def getdocuments(docType):
     try:
         mydb = mysql.connector.connect(
             host=host,
