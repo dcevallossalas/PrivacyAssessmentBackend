@@ -27,7 +27,7 @@ def deletedocument(docType:int, id:int):
 
         mycursor = mydb.cursor()
 
-        if docTYpe == 0:
+        if docType == 0:
             mycursor.execute("UPDATE normatives SET active = 0 WHERE id = %s AND active = 1",(id,))
             mycursor.execute("UPDATE principles SET active = 0 WHERE id_normative = %s AND active = 1",(id,))
         elif docType == 1:
@@ -51,7 +51,7 @@ def deletedocument(docType:int, id:int):
 @app.route("/getdocument/<docType>/<id>", methods=["GET"])
 def getdocument(docType:int, id:int):
     try:
-         mydb = mysql.connector.connect(
+        mydb = mysql.connector.connect(
             host=host,
             user=user,
             password=password,
@@ -60,9 +60,9 @@ def getdocument(docType:int, id:int):
 
         mycursor = mydb.cursor()
 
-        if docTYpe == 0:
+        if docType == 0:
             mycursor.execute("SELECT id, name, alias, description FROM normatives WHERE id = %s AND active = 1",(id,))
-        elif docTYpe == 1:
+        elif docType == 1:
             mycursor.execute("SELECT id, name, alias, description FROM laws WHERE id = %s AND active = 1",(id,))
         else:
             return {"code": -1, "message": "Not valid document type"}
@@ -122,7 +122,7 @@ def getdocuments(docType:int):
         mycursor = mydb.cursor()
         if docType == 0:
             mycursor.execute("SELECT id, name, alias FROM normatives WHERE active = 1 ORDER BY id DESC")
-        elif docTYpe == 1:
+        elif docType == 1:
             mycursor.execute("SELECT id, name, alias FROM laws WHERE active = 1 ORDER BY id DESC")
         else:
             return {"code": -1, "message": "Not valid document type"}
