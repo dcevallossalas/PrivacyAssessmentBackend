@@ -88,39 +88,6 @@ def deletedocument(docType, id):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
-@app.route("/deletedocument/<int:docType>/<int:id>", methods=["DELETE"])
-def deletedocument(docType, id):
-    try:
-        mydb = mysql.connector.connect(
-            host=host,
-            user=user,
-            password=password,
-            database=database1
-        )
-
-        mycursor = mydb.cursor()
-
-        if docType == 0:
-            mycursor.execute("UPDATE normatives SET active = 0 WHERE id = %s AND active = 1",(id,))
-            mycursor.execute("UPDATE principles SET active = 0 WHERE id_normative = %s AND active = 1",(id,))
-        elif docType == 1:
-            mycursor.execute("UPDATE laws SET active = 0 WHERE id = %s AND active = 1",(id,))
-        else:
-            return {"code": -1, "message": "Not valid document type"}
-        
-        mydb.commit()
-        
-        return {"code": 0, "message": "OK"}
-    except mysql.connector.Error as error:
-        message = "Failed in database process. Error description: {}".format(error)
-        return {"code": -1, "message": message}
-    except Exception as error:
-        message = "Error in process. Detail of error: {}".format(error)
-        return {"code": -1, "message": message}
-    finally:
-        if mydb is not None and mydb.is_connected():
-            mydb.close()
-
 @app.route("/getdocument/<int:docType>/<int:id>", methods=["GET"])
 def getdocument(docType, id):
     try:
