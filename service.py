@@ -48,6 +48,78 @@ def deletedocument(docType, id):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
+@app.route("/getcases", methods=["GET"])
+def getcases():
+    try:
+        mydb = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+            database=database1
+        )
+
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT c.id, c.id_normative, c.id_law, c.name, c.alias, n.alias as 'alias_normative', l.alias as 'alias_law' FROM cases c INNER JOIN laws l on c.id_law = l.id INNER JOIN normatives n on c.id_normative = n.id WHERE c.active = 1 and l.active = 1 and n.active = 1")
+
+        q1 = mycursor.fetchall()
+
+        Cases = list()
+
+        if q1 is not None:
+            Cases["code"] = 0
+            Cases["message"] = "OK"
+            for q in q1:
+                caseItem = dict()
+                caseItem["id"],caseItem["id_normative"],caseItem["id_law"],caseItem["name"],caseItem["alias"],caseItem["alias_normative"],caseItem["alias_law"] = q
+                Cases.append(caseItem)
+        else:
+            Cases["code"] = -1
+            Cases["message"] = "Register not found"
+
+        return Cases
+    except mysql.connector.Error as error:
+        message = "Failed in database process. Error description: {}".format(error)
+        return {"code": -1, "message": message}
+    except Exception as error:
+        message = "Error in process. Detail of error: {}".format(error)
+        return {"code": -1, "message": message}
+    finally:
+        if mydb is not None and mydb.is_connected():
+            mydb.close()
+
+@app.route("/deletedocument/<int:docType>/<int:id>", methods=["DELETE"])
+def deletedocument(docType, id):
+    try:
+        mydb = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+            database=database1
+        )
+
+        mycursor = mydb.cursor()
+
+        if docType == 0:
+            mycursor.execute("UPDATE normatives SET active = 0 WHERE id = %s AND active = 1",(id,))
+            mycursor.execute("UPDATE principles SET active = 0 WHERE id_normative = %s AND active = 1",(id,))
+        elif docType == 1:
+            mycursor.execute("UPDATE laws SET active = 0 WHERE id = %s AND active = 1",(id,))
+        else:
+            return {"code": -1, "message": "Not valid document type"}
+        
+        mydb.commit()
+        
+        return {"code": 0, "message": "OK"}
+    except mysql.connector.Error as error:
+        message = "Failed in database process. Error description: {}".format(error)
+        return {"code": -1, "message": message}
+    except Exception as error:
+        message = "Error in process. Detail of error: {}".format(error)
+        return {"code": -1, "message": message}
+    finally:
+        if mydb is not None and mydb.is_connected():
+            mydb.close()
+
 @app.route("/getdocument/<int:docType>/<int:id>", methods=["GET"])
 def getdocument(docType, id):
     try:
