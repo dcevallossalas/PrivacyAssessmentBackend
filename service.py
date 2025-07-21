@@ -62,7 +62,7 @@ def getcases():
         )
 
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT c.id, c.id_normative, c.id_law, c.name, c.alias, n.alias as 'alias_normative', l.alias as 'alias_law' FROM cases c INNER JOIN laws l on c.id_law = l.id INNER JOIN normatives n on c.id_normative = n.id WHERE c.active = 1")
+        mycursor.execute("SELECT c.id, c.id_normative, c.id_law, c.name, c.alias, n.alias as 'alias_normative', l.alias as 'alias_law' FROM cases c INNER JOIN laws l on c.id_law = l.id INNER JOIN normatives n on c.id_normative = n.id WHERE c.active = 1 ORDER BY c.id DESC")
 
         q1 = mycursor.fetchall()
 
