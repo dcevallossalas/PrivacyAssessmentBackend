@@ -16,7 +16,7 @@ password = config["password"]
 database1 = config["database1"]
 
 @app.route("/getversion", methods=["GET"])
-def getcases():
+def getversion():
     try:
         mydb = mysql.connector.connect(
             host=host,
