@@ -31,15 +31,17 @@ def getcases():
 
         q1 = mycursor.fetchall()
 
-        Cases = list()
+        Cases = dict()
 
         if q1 is not None:
             Cases["code"] = 0
             Cases["message"] = "OK"
+            Cases["cases"] = list()
+            
             for q in q1:
                 caseItem = dict()
                 caseItem["id"],caseItem["id_normative"],caseItem["id_law"],caseItem["name"],caseItem["alias"],caseItem["alias_normative"],caseItem["alias_law"] = q
-                Cases.append(caseItem)
+                Cases["cases"].append(caseItem)
         else:
             Cases["code"] = -1
             Cases["message"] = "Register not found"
