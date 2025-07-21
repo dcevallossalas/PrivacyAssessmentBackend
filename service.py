@@ -15,8 +15,8 @@ user = config["user"]
 password = config["password"]
 database1 = config["database1"]
 
-@app.route("/getversion", methods=["GET"])
-def getversion():
+@app.route("/getversion/<int:id>", methods=["GET"])
+def getversion(id):
     try:
         mydb = mysql.connector.connect(
             host=host,
