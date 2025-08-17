@@ -91,8 +91,8 @@ def createcase():
     try:
         data = request.form.get("json")
         payload = json.loads(data)
-        id_normative = payload["id_normative"]
-        id_law = payload["id_law"]
+        id_normative = payload["id_extra1"]
+        id_law = payload["id_extra2"]
         name = payload["name"]
         alias = payload["alias"]
         description = payload["description"]
