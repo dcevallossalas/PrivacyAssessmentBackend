@@ -98,7 +98,7 @@ def createcase():
         description = payload["description"]
         version = 0
         version_cs = 0
-        version ncs = 0
+        version_ncs = 0
         active = 1
 
         # Save database
