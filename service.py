@@ -52,7 +52,7 @@ def getcase(idNormative, idLaw):
         )
 
         mycursor = mydb.cursor()
-        mycursor.execute("SELECT id, id_normative, id_law, name, alias, description, version, version_cs, Version_ncs FROM cases WHERE idNormative = %s AND idlaw = %s AND active = 1", (idNormative, idLaw,))
+        mycursor.execute("SELECT id, id_normative, id_law, name, alias, description, version, version_cs, Version_ncs FROM cases WHERE id_normative = %s AND id_law = %s AND active = 1", (idNormative, idLaw,))
         q1 = mycursor.fetchone()
 
         Response = dict()
