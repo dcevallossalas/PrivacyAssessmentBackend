@@ -15,6 +15,138 @@ user = config["user"]
 password = config["password"]
 database1 = config["database1"]
 
+@app.route("/deletecase/<int:id>", methods=["DELETE"])
+def deletecase(id):
+    try:
+        mydb = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+            database=database1
+        )
+
+        mycursor = mydb.cursor()
+        mycursor.execute("UPDATE cases SET active = 0 WHERE id = %s AND active = 1",(id,))
+        mydb.commit()
+        
+        return {"code": 0, "message": "OK"}
+    except mysql.connector.Error as error:
+        message = "Failed in database process. Error description: {}".format(error)
+        return {"code": -1, "message": message}
+    except Exception as error:
+        message = "Error in process. Detail of error: {}".format(error)
+        return {"code": -1, "message": message}
+    finally:
+        if mydb is not None and mydb.is_connected():
+            mydb.close()
+
+
+@app.route("/getcase/<int:idNormative>/<int:idLaw>", methods=["GET"])
+def getcase(idNormative, idLaw):
+    try:
+        mydb = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+            database=database1
+        )
+
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT id, id_normative, id_law, name, alias, description, version, version_cs, Version_ncs FROM cases WHERE idNormative = %s AND idlaw = %s AND active = 1", (idNormative, idLaw,))
+        q1 = mycursor.fetchone()
+
+        Response = dict()
+
+        if q1 is not None:
+            Response["code"] = 0
+            Response["message"] = "OK"
+            Response["id"] = q1[0]
+            Response["extra_1"] = q1[1]
+            Response["extra_2"] = q1[2]
+            Response["name"] = q1[3]
+            Response["alias"] = q1[4]
+            Response["description"] = q1[5]
+            Response["gpt"] = "gpt_"+ str(q1[6]) + ".json"
+            Response["gpt_cs"] = "gpt_cs_"+ str(q1[7]) + ".json"
+            Response["gpt_ncs"] = "gpt_ncs_"+ str(q1[8]) + ".json"
+
+        else:
+            Response["code"] = 0
+            Response["message"] = "Register not found"
+            Response["id"] = 0
+
+        return Response
+    except mysql.connector.Error as error:
+        message = "Failed in database process. Error description: {}".format(error)
+        return {"code": -1, "message": message}
+    except Exception as error:
+        message = "Error in process. Detail of error: {}".format(error)
+        return {"code": -1, "message": message}
+    finally:
+        if mydb is not None and mydb.is_connected():
+            mydb.close()
+
+@app.route("/createcase", methods=["POST"])
+def createcase():
+    try:
+        data = request.form.get("json")
+        payload = json.loads(data)
+        id_normative = payload["id_normative"]
+        id_law = payload["id_law"]
+        name = payload["name"]
+        alias = payload["alias"]
+        description = payload["description"]
+        version = 0
+        version_cs = 0
+        version ncs = 0
+        active = 1
+
+        # Save database
+        mydb = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+            database=database1
+        )
+
+        mycursor = mydb.cursor()
+
+        mycursor.execute("SELECT ID FROM cases WHERE name = %s AND active = 1",(name,))
+
+        q1 = mycursor.fetchone()
+
+        if q1 is not None:
+            return {"code": -1, "message": "Error: A register with the provided name already exists"}
+
+        mycursor.execute("SELECT ID FROM cases WHERE alias = %s AND active = 1",(alias,))
+
+        q1 = mycursor.fetchone()
+
+        if q1 is not None:
+            return {"code": -1, "message": "Error: A register with the provided alias already exists"}
+        
+        mycursor.execute("SELECT MAX(id) FROM cases")
+
+        q2 = mycursor.fetchone()
+
+        id = 1
+        if q2 is not None and q2[0] is not None:
+            id = q2[0] + 1
+
+        mycursor.execute("INSERT INTO cases (id, id_normative, id_law, name, alias, description, version, version_cs, version_ncs, active) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (id, id_normative, id_law, name, alias, description, version, version_cs, version_ncs, 1))
+        mydb.commit()
+        return {"code": 0, "message": "Process executed successfully"}
+    except mysql.connector.Error as error:
+        message = ("Failed in database process. Error description: {}".format(error))
+        return {"code": -1, "message": message}
+    except Exception as e:
+        message = "Error in process. Detail of error: "
+        return {"code": -1, "message": message}
+    finally:
+        if mydb is not None and mydb.is_connected():
+            mydb.close()
+
+
 @app.route("/getversion/<int:id>", methods=["GET"])
 def getversion(id):
     try:
