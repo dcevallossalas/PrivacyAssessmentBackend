@@ -422,7 +422,7 @@ def createcase():
 
         mycursor.execute("INSERT INTO cases (id, id_normative, id_law, name, alias, description, version, version_cs, version_ncs, active) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (id, id_normative, id_law, name, alias, description, version, version_cs, version_ncs, 1))
         mydb.commit()
-        return {"code": 0, "message": "Process executed successfully"}
+        return {"code": 0, "message": "Process executed successfully", "id": id}
     except mysql.connector.Error as error:
         message = ("Failed in database process. Error description: {}".format(error))
         return {"code": -1, "message": message}
