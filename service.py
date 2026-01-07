@@ -148,6 +148,7 @@ def generateview(myType, mySubtype, id):
 
 @app.route("/generatequery", methods=["POST"])
 def generatequery():
+    status = ""
     try:
         data = request.form.get("json")
         payload = json.loads(data)
@@ -228,6 +229,7 @@ def generatequery():
         txtLaw = txtLaw.replace("\"","'")
         txtLaw = txtLaw.replace("\\","/")
         
+        status = status + " Before GPT"
         # Gpt
         if myType == 0:
             result = queryGpt(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
@@ -237,6 +239,7 @@ def generatequery():
             result = queryNoncompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
         result = "saved"
 
+        status = status + " Before SavePath"
         # SavePath
         if myType == 0:
             name = "gpt_"+ str(id) + ".json"
@@ -252,6 +255,7 @@ def generatequery():
         with open(os.path.join(dir, name), "w") as handle:
             handle.write(result)
 
+        status = status + " Before update database"
         # Update database
         if myType == 0:
             mycursor.execute("SELECT MAX(id) FROM annotations")
@@ -279,10 +283,10 @@ def generatequery():
         mydb.commit()
         return {"code": 0, "message": "GPT query executed successfully"}
     except mysql.connector.Error as error:
-        message = ("Failed in database process. Error description: {}".format(error))
+        message = ("Failed in database process. Error description: {}".format(error + status))
         return {"code": -1, "message": message}
     except Exception as error:
-        message = "Error in process. Detail of error: {}".format(error)
+        message = "Error in process. Detail of error: {}".format(error + status)
         return {"code": -1, "message": message}
     finally:
         if mydb is not None and mydb.is_connected():
