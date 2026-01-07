@@ -24,12 +24,7 @@ database1 = config["database1"]
 @app.route("/generatefiles", methods=["POST"])
 def generatefiles():
     try:
-        data = request.form.get("json")
-        payload = json.loads(data)
-        name = payload["name"]
-        text = "category,principle,goal,logprob"
-
-        # Save database
+         # Save database
         mydb = mysql.connector.connect(
             host=host,
             user=user,
@@ -37,6 +32,11 @@ def generatefiles():
             database=database1
         )
         mycursor = mydb.cursor()
+
+        data = request.form.get("json")
+        payload = json.loads(data)
+        name = payload["name"]
+        text = "category,principle,goal,logprob"
 
         for item in payload:
             id = item["id"]
