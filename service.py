@@ -135,7 +135,7 @@ def generateview(myType, mySubtype, id):
             with open(path,"r") as handle:
                 text = handle.read()
 
-        return {"code": 0, "message": "GPT query executed successfully", "text": text}
+        return {"code": 0, "message": "View generated successfully", "text": text}
     except mysql.connector.Error as error:
         message = "Failed in database process. Error description: {}".format(error)
         return {"code": -1, "message": message}
@@ -229,12 +229,12 @@ def generatequery():
         txtLaw = txtLaw.replace("\\","/")
         
         # Gpt
-        #if myType == 0:
-        #    result = queryGpt(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
-        #elif myType == 1:
-        #    result = queryCompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
-        #elif myType == 2:
-        #    result = queryNoncompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
+        if myType == 0:
+            result = queryGpt(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
+        elif myType == 1:
+            result = queryCompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
+        elif myType == 2:
+            result = queryNoncompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
         result = "saved"
 
         # SavePath
