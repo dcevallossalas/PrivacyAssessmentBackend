@@ -57,7 +57,7 @@ def generatefiles():
                     mycursor.execute(query, tuple(idCases))
                     q1 = mycursor.fetchall()
                     for q in q1:
-                        text = text + "\n" + alias + "," + str(q[0]) + "," + str(q[1]) + "," + str(q[2].replace(",","."))
+                        text = text + "\n" + alias + "," + str(q[0]) + "," + str(q[1]) + "," + str(q[2]).replace(",",".")
                 else:
                     # Normative case_
                     mycursor.execute("SELECT principle, category_from, category_to FROM principles where id_normative = %s and active = 1",(id_normative,))
