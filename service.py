@@ -74,7 +74,7 @@ def generatefiles():
         message = ("Failed in database process. Error description: {}".format(error))
         return {"code": -1, "message": message}
     except Exception as e:
-        message = "Error in process. Detail of error: "
+        message = "Error in process. Detail of error: {}".format(error)
         return {"code": -1, "message": message}
     finally:
         if mydb is not None and mydb.is_connected():
@@ -282,7 +282,7 @@ def generatequery():
         message = ("Failed in database process. Error description: {}".format(error))
         return {"code": -1, "message": message}
     except Exception as e:
-        message = "Error in process. Detail of error: "
+        message = "Error in process. Detail of error: {}".format(error)
         return {"code": -1, "message": message}
     finally:
         if mydb is not None and mydb.is_connected():
@@ -413,7 +413,7 @@ def createcase():
         message = ("Failed in database process. Error description: {}".format(error))
         return {"code": -1, "message": message}
     except Exception as e:
-        message = "Error in process. Detail of error: "
+        message = "Error in process. Detail of error: {}".format(error)
         return {"code": -1, "message": message}
     finally:
         if mydb is not None and mydb.is_connected():
@@ -739,7 +739,7 @@ def createnormative():
         message = ("Failed in database process. Error description: {}".format(error))
         return {"code": -1, "message": message}
     except Exception as e:
-        message = "Error in process. Detail of error: "
+        message = "Error in process. Detail of error: {}".format(error)
         return {"code": -1, "message": message}
     finally:
         if mydb is not None and mydb.is_connected():
