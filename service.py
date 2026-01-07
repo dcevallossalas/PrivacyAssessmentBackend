@@ -73,7 +73,7 @@ def generatefiles():
     except mysql.connector.Error as error:
         message = ("Failed in database process. Error description: {}".format(error))
         return {"code": -1, "message": message}
-    except Exception as e:
+    except Exception as error:
         message = "Error in process. Detail of error: {}".format(error)
         return {"code": -1, "message": message}
     finally:
@@ -281,7 +281,7 @@ def generatequery():
     except mysql.connector.Error as error:
         message = ("Failed in database process. Error description: {}".format(error))
         return {"code": -1, "message": message}
-    except Exception as e:
+    except Exception as error:
         message = "Error in process. Detail of error: {}".format(error)
         return {"code": -1, "message": message}
     finally:
