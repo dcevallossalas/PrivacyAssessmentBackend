@@ -268,7 +268,7 @@ def generatequery():
             mycursor.execute("UPDATE cases SET version = %s WHERE id = %s AND active = 1",(id, idCase,))
 
             ls_categories = range(0,n)
-            ls_loprobs = [-1] * n
+            ls_logprobs = [-10.0000000000000000000] * n
 
             for register in result["categories"]:
                 if register["category"] == "None":
@@ -277,9 +277,9 @@ def generatequery():
                     category = register["category"]
                     ls_logprobs[category] = register["log_prob"]
 
-            for ls_category in ls_categories
+            for ls_category in ls_categories:
                 seq = seq + 1
-                mycursor.execute("INSERT INTO annotations ('id','id_case','version','category','log_prob','active') values(%s,%s,%s,%s,%s,1)",(seq, idCase, id, ls_category, ls_logprobs[ls_category]))
+                mycursor.execute("INSERT INTO annotations (id, id_case, version, category , log_prob, active) values(%s,%s,%s,%s,%s,1)",(seq, idCase, id, ls_category, ls_logprobs[ls_category]))
         elif myType == 1:
             mycursor.execute("UPDATE cases SET version_cs = %s WHERE id = %s AND active = 1",(id, idCase,))
         elif myType == 2:
