@@ -292,7 +292,7 @@ def generatequery():
             mycursor.execute("UPDATE cases SET version_ncs = %s WHERE id = %s AND active = 1",(id, idCase,))
 
         mydb.commit()
-        return {"code": 0, "message": "GPT query executed successfully"}
+        return {"code": 0, "message": "GPT query executed successfully", "id": id}
     except mysql.connector.Error as error:
         message = ("Failed in database process. Error description: {}".format(error))
         return {"code": -1, "message": message}
