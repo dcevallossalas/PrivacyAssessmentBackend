@@ -35,7 +35,6 @@ def generatefiles():
 
         data = request.form.get("json")
         payload = json.loads(data)
-        name = payload["name"]
         text = "category,principle,goal,logprob"
 
         for item in payload:
