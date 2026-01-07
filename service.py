@@ -47,7 +47,7 @@ def generatefiles():
                 mycursor.execute("SELECT b.principle, c.category, c.log_prob FROM cases a INNER JOIN principles b on a.id_normative = b.id_normative INNER JOIN annotations c on a.id = c.id_case and a.version = c.version WHERE c.log_prob <= 0 and c.category between b.category_from and b.category_to and a.id = %s and a.active = 1 and b.active = 1 and c.active = 1 ORDER BY b.principle, c.category, c.log_prob",(id,))
                 q1 = mycursor.fetchall()
                 for q in q1:
-                    text = text + "\n" + alias + "," + str(q[0]) + "," + str(q[1]) + "," + str(q[2].replace(",","."))
+                    text = text + "\n" + alias + "," + str(q[0]) + "," + str(q[1]) + "," + str(q[2]).replace(",",".")
             else:
                 if id_normative == 0:
                     # Compound case
