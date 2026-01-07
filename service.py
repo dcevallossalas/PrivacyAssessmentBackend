@@ -2,6 +2,8 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from pypdf import PdfReader
+from decimal import Decimal, getcontext
+import random
 import mysql.connector
 import json
 import os
@@ -268,7 +270,11 @@ def generatequery():
             mycursor.execute("UPDATE cases SET version = %s WHERE id = %s AND active = 1",(id, idCase,))
 
             ls_categories = range(0,n)
-            ls_logprobs = [-10.0000000000000000000] * n
+            getcontext().prec = 40  # enough precision
+            r = Decimal(random.random())
+            num = Decimal('-100') + r * (Decimal('-10') - Decimal('-100'))
+            num = num.quantize(Decimal('1.' + '0'*19))
+            ls_logprobs = [num] * n
 
             for register in result["categories"]:
                 if register["category"] == "None":
