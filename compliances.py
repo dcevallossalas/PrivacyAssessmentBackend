@@ -1,3 +1,5 @@
+from openai import OpenAI
+
 def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_law, name_law, alias_law, textNormative, textLaw, n):
     client = OpenAI(api_key = apiKey)
     example1 = "Suposse that this is a very long text with the law to analyze."

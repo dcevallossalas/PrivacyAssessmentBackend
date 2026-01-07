@@ -2,13 +2,12 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from pypdf import PdfReader
-from openai import OpenAI
 import mysql.connector
 import json
 import os
-import assessment
-import compliances
-import noncompliances
+from assessment import queryGpt
+from compliances import queryCompliances
+from noncompliances import queryNoncompliances
 
 app = Flask(__name__)
 
@@ -44,7 +43,7 @@ def generatefiles():
 
             if id > 0:
                 # Single case
-                mycursor.execute("SELECT b.principle, c.category, c.log_prob FROM cases a INNER JOIN principles b on a.id_normative = b.id_normative INNER JOIN annotations c on a.id = c.id_case WHERE c.log_prob <= 0 and c.category between b.category_from and b.category_to and a.id = %s and a.active = 1 and b.active = 1 and c.active = 1 ORDER BY b.principle, c.category, c.log_prob",(id,))
+                mycursor.execute("SELECT b.principle, c.category, c.log_prob FROM cases a INNER JOIN principles b on a.id_normative = b.id_normative INNER JOIN annotations c on a.id = c.id_case and a.version = c.version WHERE c.log_prob <= 0 and c.category between b.category_from and b.category_to and a.id = %s and a.active = 1 and b.active = 1 and c.active = 1 ORDER BY b.principle, c.category, c.log_prob",(id,))
                 q1 = mycursor.fetchall()
                 for q in q1:
                     text = text + "\n" + alias + "," + str(q[0]) + "," + str(q[1]) + "," + str(q[2].replace(",","."))
@@ -53,7 +52,7 @@ def generatefiles():
                     # Compound case
                     idCases = item["subcases"]
                     placeholders = ",".join(["%s"] * len(idCases))
-                    query = f"SELECT b.principle, c.category, MAX(c.log_prob) as log_prob FROM cases a INNER JOIN principles b on a.id_normative = b.id_normative INNER JOIN annotations c on a.id = c.id_case WHERE c.log_prob <= 0 and c.category between b.category_from and b.category_to and a.id IN ({placeholders}) and a.active = 1 and b.active = 1 and c.active = 1 GROUP BY b.principle, c.category ORDER BY b.principle, c.category, log_prob"
+                    query = f"SELECT b.principle, c.category, MAX(c.log_prob) as log_prob FROM cases a INNER JOIN principles b on a.id_normative = b.id_normative INNER JOIN annotations c on a.id = c.id_case and a.version = c.version WHERE c.log_prob <= 0 and c.category between b.category_from and b.category_to and a.id IN ({placeholders}) and a.active = 1 and b.active = 1 and c.active = 1 GROUP BY b.principle, c.category ORDER BY b.principle, c.category, log_prob"
                     mycursor.execute(query, tuple(idCases))
                     q1 = mycursor.fetchall()
                     for q in q1:
@@ -148,7 +147,6 @@ def generateview(myType, mySubtype, id):
 
 @app.route("/generatequery", methods=["POST"])
 def generatequery():
-    status = ""
     try:
         data = request.form.get("json")
         payload = json.loads(data)
@@ -183,7 +181,6 @@ def generatequery():
         if q1 is None:
             return {"code": -1, "message": "Error: Case register not found"}
 
-        q1 = mycursor.fetchone()
         id = q1[0] + 1
 
         # Normative
@@ -229,7 +226,6 @@ def generatequery():
         txtLaw = txtLaw.replace("\"","'")
         txtLaw = txtLaw.replace("\\","/")
         
-        status = status + " Before GPT"
         # Gpt
         if myType == 0:
             result = queryGpt(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
@@ -237,9 +233,7 @@ def generatequery():
             result = queryCompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
         elif myType == 2:
             result = queryNoncompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
-        result = "saved"
 
-        status = status + " Before SavePath"
         # SavePath
         if myType == 0:
             name = "gpt_"+ str(id) + ".json"
@@ -248,14 +242,19 @@ def generatequery():
         elif myType == 2:
             name = "gpt_ncs_"+ str(id) + ".txt"
 
-        dir = os.path.join(os.getcwd(), "Data", "Cases", str(idCase))
+        dir = os.path.join(os.getcwd(), "Data")
+        if not os.path.exists(dir):
+            os.mkdir(dir)
+        dir = os.path.join(dir, "Cases")
+        if not os.path.exists(dir):
+            os.mkdir(dir)
+        dir = os.path.join(dir, str(idCase))
         if not os.path.exists(dir):
             os.mkdir(dir)
         
         with open(os.path.join(dir, name), "w") as handle:
-            handle.write(result)
+            json.dump(result, handle, indent=4)
 
-        status = status + " Before update database"
         # Update database
         if myType == 0:
             mycursor.execute("SELECT MAX(id) FROM annotations")
@@ -266,15 +265,21 @@ def generatequery():
             else:
                 seq = 0
 
+            mycursor.execute("UPDATE cases SET version = %s WHERE id = %s AND active = 1",(id, idCase,))
+
+            ls_categories = range(0,n)
+            ls_loprobs = [-1] * n
+
             for register in result["categories"]:
                 if register["category"] == "None":
-                    category = -1
+                    break
                 else:
                     category = register["category"]
-                log_prob = register["log_prob"]
+                    ls_logprobs[category] = register["log_prob"]
+
+            for ls_category in ls_categories
                 seq = seq + 1
-                mycursor.execute("INSERT INTO annotations ('id','id_case','category','log_prob','active') values(%s,%s,%s,%s,1)",(seq, idCase, category, log_prob))
-            mycursor.execute("UPDATE cases SET version = %s WHERE id = %s AND active = 1",(id, idCase,))
+                mycursor.execute("INSERT INTO annotations ('id','id_case','version','category','log_prob','active') values(%s,%s,%s,%s,%s,1)",(seq, idCase, id, ls_category, ls_logprobs[ls_category]))
         elif myType == 1:
             mycursor.execute("UPDATE cases SET version_cs = %s WHERE id = %s AND active = 1",(id, idCase,))
         elif myType == 2:
@@ -283,10 +288,10 @@ def generatequery():
         mydb.commit()
         return {"code": 0, "message": "GPT query executed successfully"}
     except mysql.connector.Error as error:
-        message = ("Failed in database process. Error description: {}".format(error + status))
+        message = ("Failed in database process. Error description: {}".format(error))
         return {"code": -1, "message": message}
     except Exception as error:
-        message = "Error in process. Detail of error: {}".format(error + status)
+        message = "Error in process. Detail of error: {}".format(error)
         return {"code": -1, "message": message}
     finally:
         if mydb is not None and mydb.is_connected():

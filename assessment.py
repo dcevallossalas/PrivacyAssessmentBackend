@@ -1,13 +1,14 @@
-# Query GPT annotations
+from openai import OpenAI
+
 def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name_law, alias_law, textNormative, textLaw, n):
-    client = OpenAI(api_key = apikey)
+    client = OpenAI(api_key = apiKey)
     example1 = "Suposse that this is a very long text with the law to analyze."
     output1 = "0,1,2"
     example2 = "Suposse that this is a very long text with the law to analyze."
     output2 = "3,4"
     message = [{
         "role": "system",
-        "content": "You are an expert in privacy and must determine how well aligned is the law " + nale_law + "with the normative " + name_normative + "." +
+        "content": "You are an expert in privacy and must determine how well aligned is the law " + name_law + "with the normative " + name_normative + "." +
         "Given the text of the law you must determine whether it suggests and/or compels the compliance of each one of the " + str(n) + "categories of goals defined by the normative." +
         "The categories are coded with numbers from 0 to " + str(n-1) + ". Just return the codes without a reason or extra text. In case of no categories selected, answer None." +
 
@@ -58,4 +59,4 @@ def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name
     resultFinal["name_law"] = name_law
     resultFinal["alias_law"] = name_law
     resultFinal["categories"] = results
-    return resultsFinal
+    return resultFinal
