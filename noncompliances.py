@@ -13,7 +13,7 @@ def queryNoncompliances(apiKey, id_normative, name_normative, alias_normative, i
         "and a literal which can belong to an article or subarticle, that you will represent through its numbers and literal in parenthesis, e.g. (4)(a) means article 4 literal a; (46)(5)(c) means article 46 subarticle 5, literal c" \
         "Of course, if your analysis refers to all subarticles of an article, then you just specify the article (not each of the subarticles). Try not to be redundant and resume the results as much as you can so that they are easy to read and interpret." \
         "Given the text of the privacy legal framework, you must determine for each one of the " + str(n) + "categories of subclauses defined by the standard (in maximum two paragraphs) the reasons why the privacy legal framework does not fulfill or is not aligned in some way with each subclause." \
-        "The categories are coded with numbers from 0 to " + str(n-1) + "\n" 
+        "The categories are coded with numbers from 0 to " + str(n-1) + ". Answer in English.\n" 
 
     if putText:
         instructions = instructions + "The categories of subclauses defined by the standard and their definitions are the following:\n"+ textNormative + "\n"

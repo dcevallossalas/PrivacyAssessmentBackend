@@ -13,7 +13,7 @@ def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_l
         "Of course, if all subarticles of an article covers a category, then you just specify the article (not each of the subarticles). Try not to be redundant and resume the results as much as you can so that they are easy to read and interpret." \
         "Given the text of the privacy legal framework you must determine for each one of the " + str(n) + "categories of subclauses defined by the standard all those items of the privacy legal framework that are aligned or covers in some way each category. Of course, each item of the privacy legal framework could be part or be aligned with various categories." \
         "The categories are coded with numbers from 0 to " + str(n-1) + "." \
-        "Complement your answer explaining in one short paragraph the reasons why you made the match for each category.\n" 
+        "Complement your answer explaining in one short paragraph the reasons why you made the match for each category. Answer in English.\n" 
 
     if putText:
         instructions = instructions + "The categories of subclauses defined by the standard and their definitions are the following:\n"+ textNormative + "\n"
