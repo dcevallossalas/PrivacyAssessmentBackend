@@ -30,7 +30,7 @@ def queryNoncompliances(apiKey, id_normative, name_normative, alias_normative, i
     if putText:
         inputgpt = inputgpt + "The following is the text of the privacy legal framework that you previously analyzed::\n" + textLaw
 
-    response = client.chat.completions.create(
+    response = client.responses.create(
         model="gpt-5.2",
         previous_response_id = previous_id,
         instructions = instructions,
