@@ -24,7 +24,7 @@ def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_l
         "Expected ouput structure:" + output1 + "\n" \
         "Example 2:\n" \
         "Text of privacy legal framework: " + example2 + "\n" \
-        "Expected ouput structure:" + output2 \
+        "Expected ouput structure:" + output2
 
     inputgpt = ""
     if putText:
