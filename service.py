@@ -228,10 +228,21 @@ def generatequery():
         txtLaw = txtLaw.replace("\\","/")
         
         # Gpt
+        mycursor.execute("SELECT version, version_cs, version_ncs WHERE id = %s AND active = 1",(idCase,))
+        q1 = mycursor.fetchone()
+        version1 = q1[0]
+        version2 = q1[1]
+        version3 = q1[2]
+
+        if q1 is None:
+            return {"code": -1, "message": "Error: Case not found"}
+
         if myType == 0:
             result = queryGpt(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
         elif myType == 1:
-            result = queryCompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
+            with open(os.path.join(dir, "Cases","gpt_"+ str(version1) + ".json"),"r") as handle:
+                case_data = json.load(file)
+            result = queryCompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n, case_data["id"], False)
         elif myType == 2:
             result = queryNoncompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
 
