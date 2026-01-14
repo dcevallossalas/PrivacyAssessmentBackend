@@ -30,7 +30,7 @@ def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_l
     if putText:
         inputgpt = inputgpt + "The following is the text of the law that you previously analyzed:\n" + textLaw
 
-    response = client.chat.completions.create(
+    response = client.responses.create(
         instructions = instructions,
         input= inputgpt,
         temperature=0,
