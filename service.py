@@ -242,11 +242,11 @@ def generatequery():
         elif myType == 1:
             with open(os.path.join(os.getcwd(), "Data", "Cases", str(idCase), "gpt_"+ str(version1) + ".json"),"r") as handle:
                 case_data = json.load(handle)
-            result = queryCompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n, case_data["id"], False)
+            result = queryCompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n, case_data["id"], True)
         elif myType == 2:
             with open(os.path.join(os.getcwd(), "Data", "Cases", str(idCase), "gpt_"+ str(version1) + ".json"),"r") as handle:
                 case_data = json.load(handle)
-            result = queryNoncompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n,  case_data["id"], False)
+            result = queryNoncompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n,  case_data["id"], True)
 
         # SavePath
         if myType == 0:
