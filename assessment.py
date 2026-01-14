@@ -48,9 +48,9 @@ def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name
     resultFinal["id"] = response.id
     resultFinal["id_normative"] = id_normative
     resultFinal["name_normative"] = name_normative
-    resultFinal["alias_normative"] = name_normative
+    resultFinal["alias_normative"] = alias_normative
     resultFinal["id_law"] = id_law
     resultFinal["name_law"] = name_law
-    resultFinal["alias_law"] = name_law
+    resultFinal["alias_law"] = alias_law
     resultFinal["categories"] = results
     return resultFinal
