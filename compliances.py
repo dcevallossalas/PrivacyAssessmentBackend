@@ -16,7 +16,7 @@ def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_l
         "Complement your answer explaining in one short paragraph the reasons why you made the match for each category.\n" 
 
     if putText:
-        intructions = instructions + "The categories of subclauses defined by the standard and their definitions are the following:\n"+ textNormative + "\n" \
+        intructions = instructions + "The categories of subclauses defined by the standard and their definitions are the following:\n"+ textNormative + "\n"
 
     intructions = instructions + "Here there are two examples of expected responses from you when analyzing the privacy legal framework:\n" \
         "Example:\n" \
