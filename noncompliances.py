@@ -39,5 +39,4 @@ def queryNoncompliances(apiKey, id_normative, name_normative, alias_normative, i
         top_p=1
     )
 
-    resultGpt = response.choices[0].message.content
-    return resultGpt
+    return response.output_text

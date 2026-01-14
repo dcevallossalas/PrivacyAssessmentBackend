@@ -39,5 +39,4 @@ def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_l
         top_p=1
     )
 
-    resultGpt = response.output_text
-    return resultGpt
+    return response.output_text
