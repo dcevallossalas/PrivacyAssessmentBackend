@@ -228,7 +228,7 @@ def generatequery():
         txtLaw = txtLaw.replace("\\","/")
         
         # Gpt
-        mycursor.execute("SELECT version, version_cs, version_ncs WHERE id = %s AND active = 1",(idCase,))
+        mycursor.execute("SELECT version, version_cs, version_ncs FROM cases WHERE id = %s AND active = 1",(idCase,))
         q1 = mycursor.fetchone()
         version1 = q1[0]
         version2 = q1[1]
