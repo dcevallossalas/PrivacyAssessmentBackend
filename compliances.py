@@ -13,8 +13,9 @@ def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_l
         "Of course, if all subarticles of an article covers a category, then you just specify the article (not each of the subarticles). Try not to be redundant and resume the results as much as you can so that they are easy to read and interpret." \
         "Given the text of the law you must determine for each one of the " + str(n) + "categories of goals defined by the normative all those items of the law that are aligned or covers in some way each category. Of course each item of the law could be part or be aligned with various categories." \
         "The categories are coded with numbers from 0 to " + str(n-1) + "In case of a category with no items of the law determined, answer None for that category." \
-        "Complement your answer explaining in one short paragraph the reasons why you made this match for each category." \
-    if inputtext:
+        "Complement your answer explaining in one short paragraph the reasons why you made this match for each category." 
+        
+    if puttext:
         intructions = instructions + "The categories of goals defined by the law and their definitions are the following:\n"+ textNormative + "\n" \
 
     intructions = instructions + "Here there are two examples of expected responses from you when analyzing the law:\n" \
