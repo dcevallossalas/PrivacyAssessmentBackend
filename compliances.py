@@ -11,7 +11,7 @@ def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_l
         "a subarticle of the privacy legal framework that belongs to an article or another subarticle, that you will represent through its numbers in parenthesis, e.g. (8)(2) means article 8 subarticle 2; (5)(3)(2) means article 5 subarticle 3, subarticle 2; " \
         "and a literal which can belong to an article or subarticle,  that you will represent through its numbers and literal in parenthesis, e.g. (4)(a) means article 4 literal a; (46)(5)(c) means article 46 subarticle 5, literal c" \
         "Of course, if all subarticles of an article covers a category, then you just specify the article (not each of the subarticles). Try not to be redundant and resume the results as much as you can so that they are easy to read and interpret." \
-        "Given the text of the privacy legal framework you must determine for each one of the " + str(n) + "categories of subclauses defined by the standard all those items of the privacy legal framework that are aligned or covers in some way each category. Of course each item of the privacy legal framework could be part or be aligned with various categories." \
+        "Given the text of the privacy legal framework you must determine for each one of the " + str(n) + "categories of subclauses defined by the standard all those items of the privacy legal framework that are aligned or covers in some way each category. Of course, each item of the privacy legal framework could be part or be aligned with various categories." \
         "The categories are coded with numbers from 0 to " + str(n-1) + "." \
         "Complement your answer explaining in one short paragraph the reasons why you made the match for each category.\n" 
 
