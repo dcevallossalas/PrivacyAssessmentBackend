@@ -18,7 +18,7 @@ def queryNoncompliances(apiKey, id_normative, name_normative, alias_normative, i
     if putText:
         instructions = instructions + "The categories of subclauses defined by the standard and their definitions are the following:\n"+ textNormative + "\n"
 
-    instructions = instruction + "Here there are two examples of expected responses from you when analyzing the privacy legal framework:\n" \
+    instructions = instructions + "Here there are two examples of expected responses from you when analyzing the privacy legal framework:\n" \
         "Example:\n" \
         "Text of privacy legal framework: " + example1 + "\n" \
         "Expected ouput structure:" + output1 + "\n" \
