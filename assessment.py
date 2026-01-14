@@ -22,12 +22,13 @@ def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name
 
     response = client.responses.create(
         model="gpt-5.2",
-        instructions = instruction,
+        instructions = instructions,
         input= inputgpt,
         temperature=0,
         top_p=1,
         seed=1234,
-        logprobs=True
+        logprobs=True,
+        reasoning={"effort": "none"},
     )
 
     resultGpt = response.output_text
