@@ -244,7 +244,9 @@ def generatequery():
                 case_data = json.load(handle)
             result = queryCompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n, case_data["id"], False)
         elif myType == 2:
-            result = queryNoncompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
+            with open(os.path.join(os.getcwd(), "Data", "Cases", str(idCase), "gpt_"+ str(version1) + ".json"),"r") as handle:
+                case_data = json.load(handle)
+            result = queryNoncompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n,  case_data["id"], False)
 
         # SavePath
         if myType == 0:
