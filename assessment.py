@@ -26,8 +26,9 @@ def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name
         input= inputgpt,
         temperature=0,
         top_p=1,
-        seed=1234,
-        include=["message.output_text.logprobs"]
+        #seed=1234,
+        #include=["message.output_text.logprobs"],
+        logprobs = True,
         reasoning={"effort": "none"},
     )
 
