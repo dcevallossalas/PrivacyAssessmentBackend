@@ -240,7 +240,7 @@ def generatequery():
         if myType == 0:
             result = queryGpt(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n)
         elif myType == 1:
-            with open(os.path.join(os.getcwd(), "Data", "Cases",str(version),"gpt_"+ str(version1) + ".json"),"r") as handle:
+            with open(os.path.join(os.getcwd(), "Data", "Cases", str(version1), "gpt_"+ str(version1) + ".json"),"r") as handle:
                 case_data = json.load(file)
             result = queryCompliances(apiKey, idNormative, name_normative, alias_normative, idLaw, name_law, alias_law, txtNormative, txtLaw, n, case_data["id"], False)
         elif myType == 2:
