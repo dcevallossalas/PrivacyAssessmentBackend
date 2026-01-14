@@ -31,6 +31,7 @@ def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_l
         inputgpt = inputgpt + "The following is the text of the law that you previously analyzed:\n" + textLaw
 
     response = client.responses.create(
+        model="gpt-5.2",
         instructions = instructions,
         input= inputgpt,
         temperature=0,
