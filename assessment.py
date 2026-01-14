@@ -13,10 +13,10 @@ def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name
         "Here there are two examples of expected responses from you when analyzing the privacy legal framework:\n" \
         "Example 1:\n" \
         "Text of privacy legal framework: " + example1 + "\n" \
-        "Expected ouput:" + output1 + "\n" \
+        "Expected ouput structure:" + output1 + "\n" \
         "Example 2:\n" \
         "Text of privacy legal framework: " + example2 + "\n" \
-        "Expected ouput:" + output2 \
+        "Expected ouput structure:" + output2 \
         
     inputgpt =  "The following is the text of the privacy legal framework that you must analyze:\n" + textLaw
 
