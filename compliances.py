@@ -32,6 +32,7 @@ def queryCompliances(apiKey, id_normative, name_normative, alias_normative, id_l
 
     response = client.responses.create(
         model="gpt-5.2",
+        previous_response_id = previous_id,
         instructions = instructions,
         input= inputgpt,
         temperature=0,
