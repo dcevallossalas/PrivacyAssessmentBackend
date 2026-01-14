@@ -3,9 +3,9 @@ from openai import OpenAI
 def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name_law, alias_law, textNormative, textLaw, n):
     client = OpenAI(api_key = apiKey)
     example1 = "Suposse that this is a very long text with the privacy legal framework to analyze."
-    output1 = "0,1,2,17"
+    output1 = "0,1"
     example2 = "Suposse that this is a very long text with the privacy legal framework to analyze."
-    output2 = "3,21"
+    output2 = "1"
     instructions = "You are an expert in privacy and must determine how well aligned is the privacy legal framework " + name_law + "with the standard " + name_normative + "." \
         "Given the text of the privacy legal framework you must determine whether it suggests and/or compels the compliance of each one of the " + str(n) + "subclauses defined by the standard." \
         "The categories are coded with numbers from 0 to " + str(n-1) + ". Just return the codes without a reason or extra text. In case of no categories selected, answer None." \
@@ -26,10 +26,7 @@ def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name
         input= inputgpt,
         temperature=0,
         top_p=1,
-        #seed=1234,
-        #include=["message.output_text.logprobs"],
-        logprobs = True,
-        reasoning={"effort": "none"},
+        include=["message.output_text.logprobs"]
     )
 
     resultGpt = response.output_text
@@ -40,7 +37,7 @@ def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name
         result["log_prob"] = 0
         results.append(result)
     else:
-        for logprob in response.output_text.logprobs:
+        for logprob in response.output[0].content[0].logprobs:
             if str(logprob.token) != "," and str(logprob.token) != " " and str(logprob.token) != ", " and str(logprob.token) != " ,":
                 result = dict()
                 result["category"] = int(logprob.token)
