@@ -6,11 +6,11 @@ def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name
     output1 = "0,1,2,17"
     example2 = "Suposse that this is a very long text with the privacy legal framework to analyze."
     output2 = "3,21"
-    instructions = "You are an expert in privacy and must determine how well aligned is the privacy legal framework " + name_law + "with the standard " + name_normative + "." +
-        "Given the text of the privacy legal framework you must determine whether it suggests and/or compels the compliance of each one of the " + str(n) + "subclauses defined by the standard." +
-        "The categories are coded with numbers from 0 to " + str(n-1) + ". Just return the codes without a reason or extra text. In case of no categories selected, answer None." +
+    instructions = "You are an expert in privacy and must determine how well aligned is the privacy legal framework " + name_law + "with the standard " + name_normative + "." \
+        "Given the text of the privacy legal framework you must determine whether it suggests and/or compels the compliance of each one of the " + str(n) + "subclauses defined by the standard." \
+        "The categories are coded with numbers from 0 to " + str(n-1) + ". Just return the codes without a reason or extra text. In case of no categories selected, answer None." \
 
-        "The categories of subclauses defined by the standard and their definitions are the following:\n"+ textNormative + "\n"
+        "The categories of subclauses defined by the standard and their definitions are the following:\n"+ textNormative + "\n" \
 
         "Here there are two examples of expected responses from you when analyzing the privacy legal framework:\n" \
         "Example 1:\n" \
