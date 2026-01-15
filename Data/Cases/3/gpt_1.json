@@ -1,0 +1,91 @@
+{
+    "id": "resp_0c28bc58c2e770f0006967e9628d68819981671bf4ede66b05",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 3,
+    "name_law": "Law 21719 Chile",
+    "alias_law": "Law 21719",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.305639
+        },
+        {
+            "category": 1,
+            "log_prob": -0.000139
+        },
+        {
+            "category": 2,
+            "log_prob": -0.315314
+        },
+        {
+            "category": 3,
+            "log_prob": -1.300004
+        },
+        {
+            "category": 4,
+            "log_prob": -0.269813
+        },
+        {
+            "category": 5,
+            "log_prob": -5.9e-05
+        },
+        {
+            "category": 6,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 7,
+            "log_prob": -4e-06
+        },
+        {
+            "category": 9,
+            "log_prob": -0.64332
+        },
+        {
+            "category": 10,
+            "log_prob": -0.002333
+        },
+        {
+            "category": 11,
+            "log_prob": -0.026702
+        },
+        {
+            "category": 12,
+            "log_prob": -0.000553
+        },
+        {
+            "category": 13,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 14,
+            "log_prob": -3.2e-05
+        },
+        {
+            "category": 15,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 16,
+            "log_prob": -3.8e-05
+        },
+        {
+            "category": 17,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 18,
+            "log_prob": -0.000139
+        },
+        {
+            "category": 21,
+            "log_prob": -0.603309
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

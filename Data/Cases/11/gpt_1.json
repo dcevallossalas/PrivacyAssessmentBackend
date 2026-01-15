@@ -1,0 +1,95 @@
+{
+    "id": "resp_0e8f760fa3c33553006967f9e09d04819abc345f448757f51a",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 11,
+    "name_law": "Supreme Decree 016-2024-JUS Per\u00fa",
+    "alias_law": "Supreme Decree 016-2024-JUS",
+    "categories": [
+        {
+            "category": 1,
+            "log_prob": -0.184237
+        },
+        {
+            "category": 2,
+            "log_prob": -0.418761
+        },
+        {
+            "category": 3,
+            "log_prob": -0.631732
+        },
+        {
+            "category": 4,
+            "log_prob": -0.528935
+        },
+        {
+            "category": 5,
+            "log_prob": -0.014177
+        },
+        {
+            "category": 6,
+            "log_prob": -4e-06
+        },
+        {
+            "category": 7,
+            "log_prob": -0.000285
+        },
+        {
+            "category": 9,
+            "log_prob": -0.669152
+        },
+        {
+            "category": 10,
+            "log_prob": -1e-05
+        },
+        {
+            "category": 11,
+            "log_prob": 0.0
+        },
+        {
+            "category": 12,
+            "log_prob": -2.9e-05
+        },
+        {
+            "category": 13,
+            "log_prob": 0.0
+        },
+        {
+            "category": 14,
+            "log_prob": 0.0
+        },
+        {
+            "category": 15,
+            "log_prob": 0.0
+        },
+        {
+            "category": 16,
+            "log_prob": -1.1e-05
+        },
+        {
+            "category": 17,
+            "log_prob": -9e-06
+        },
+        {
+            "category": 18,
+            "log_prob": -5.3e-05
+        },
+        {
+            "category": 19,
+            "log_prob": -0.022685
+        },
+        {
+            "category": 20,
+            "log_prob": -0.005999
+        },
+        {
+            "category": 21,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

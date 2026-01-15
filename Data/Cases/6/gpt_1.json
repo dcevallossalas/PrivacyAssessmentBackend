@@ -1,0 +1,79 @@
+{
+    "id": "resp_0bc7a5143135c5c8006967f09b5d44819084ba9775a500ecd9",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 6,
+    "name_law": "Ley Federal de Protecci\u00f3n de Datos Personales en Posesi\u00f3n de Particulares",
+    "alias_law": "LFPDPPP",
+    "categories": [
+        {
+            "category": 3,
+            "log_prob": -1.181585
+        },
+        {
+            "category": 5,
+            "log_prob": -0.86881
+        },
+        {
+            "category": 6,
+            "log_prob": -0.00111
+        },
+        {
+            "category": 7,
+            "log_prob": -0.053167
+        },
+        {
+            "category": 10,
+            "log_prob": -0.484032
+        },
+        {
+            "category": 11,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 12,
+            "log_prob": -0.038186
+        },
+        {
+            "category": 13,
+            "log_prob": -1.3e-05
+        },
+        {
+            "category": 14,
+            "log_prob": -5e-06
+        },
+        {
+            "category": 15,
+            "log_prob": -0.000217
+        },
+        {
+            "category": 16,
+            "log_prob": -0.001548
+        },
+        {
+            "category": 17,
+            "log_prob": -0.000263
+        },
+        {
+            "category": 18,
+            "log_prob": -9.2e-05
+        },
+        {
+            "category": 19,
+            "log_prob": -0.181811
+        },
+        {
+            "category": 20,
+            "log_prob": -0.003097
+        },
+        {
+            "category": 21,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

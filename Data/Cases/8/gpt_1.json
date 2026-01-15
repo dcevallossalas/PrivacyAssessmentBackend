@@ -1,0 +1,27 @@
+{
+    "id": "resp_0c5fa83552195a1f006967f5a008448198999e120d839d3e73",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 8,
+    "name_law": "Law 1581 Colombia",
+    "alias_law": "Law 1581",
+    "categories": [
+        {
+            "category": 1,
+            "log_prob": -0.163613
+        },
+        {
+            "category": 15,
+            "log_prob": -1.105096
+        },
+        {
+            "category": 21,
+            "log_prob": -0.561796
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

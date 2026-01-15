@@ -1,0 +1,103 @@
+{
+    "id": "resp_047bfa369515571b006967e2bd877081968b700dfd20e5a302",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 1,
+    "name_law": "General Data Protection Regulation",
+    "alias_law": "GDPR",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.002883
+        },
+        {
+            "category": 1,
+            "log_prob": -0.002197
+        },
+        {
+            "category": 2,
+            "log_prob": -0.000612
+        },
+        {
+            "category": 3,
+            "log_prob": -0.275832
+        },
+        {
+            "category": 4,
+            "log_prob": -0.07097
+        },
+        {
+            "category": 5,
+            "log_prob": -1.2e-05
+        },
+        {
+            "category": 6,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 7,
+            "log_prob": 0.0
+        },
+        {
+            "category": 8,
+            "log_prob": -0.000173
+        },
+        {
+            "category": 9,
+            "log_prob": -0.006758
+        },
+        {
+            "category": 10,
+            "log_prob": -7e-06
+        },
+        {
+            "category": 11,
+            "log_prob": -8e-06
+        },
+        {
+            "category": 12,
+            "log_prob": -1.9e-05
+        },
+        {
+            "category": 13,
+            "log_prob": 0.0
+        },
+        {
+            "category": 14,
+            "log_prob": -0.0
+        },
+        {
+            "category": 15,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 16,
+            "log_prob": -0.0
+        },
+        {
+            "category": 17,
+            "log_prob": -0.0
+        },
+        {
+            "category": 18,
+            "log_prob": -0.000152
+        },
+        {
+            "category": 19,
+            "log_prob": -0.00076
+        },
+        {
+            "category": 20,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 21,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

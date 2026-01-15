@@ -1,0 +1,235 @@
+0 Understanding the organization and its context (normative point 4.1): The organization shall determine external and internal issues that are relevant to its purpose and that affect its ability to achieve the intended result(s) of its privacy information management system. 
+The organization shall determine whether climate change is a relevant issue.
+The organization shall determine if it is acting as a PII controller (including as a joint PII controller) or as a PII processor.
+The organization shall determine external and internal issues that are relevant to its context and that affect its ability to achieve the intended outcome(s) of its PIMS.
+- applicable privacy legislation;
+- applicable regulations;
+- applicable judicial decisions;
+- applicable organizational context, governance, policies and procedures;
+- applicable administrative decisions;
+- applicable contractual requirements.
+Where the organization acts in both roles (i.e. a PII controller and a PII processor), separate roles shall be determined, each of which is the subject of a separate set of controls.
+NOTE2 The role of the organization can be different for each instance of the processing of PII, since it depends on who determines the purposes and means of the processing.
+
+1 Understanding the needs and expectations of interested parties (normative point 4.2): The organization shall determine:
+- the interested parties that are relevant to the privacy information management system;
+- the relevant requirements of these interested parties;
+- which of these requirements will be addressed through the privacy information management system.
+NOTE1 - Relevant interested parties can have requirements related to climate change.
+The organization shall include among its interested parties those parties having interests or responsibilities associated with the processing of PII, including the PII principals.
+NOTE2 Other interested parties can include customers, supervisory authorities, other PII controllers, PII processors and their subcontractors.
+Depending on the role of the organization, “customer” can be understood as either:
+a) an organization who has a contract with a PII controller (e.g. the customer of the PII controller);
+NOTE3 - This can be the case of an organization which is a joint PII controller.
+b) a PII controller who has a contract with a PII processor (e.g. the customer of the PII processor); or
+c) a PII processor who has a contract with a subcontractor for PII processing (e.g. the customer of the subcontracted PII processor).
+NOTE4 An individual person whose PII is processed in a business association (for example in a consumer, employee, vendor, visitor relationship) is referred to as a “PII principal” in this document.
+NOTES Requirements relevant to the processing of PII can be determined by legal and regulatory requirements, by contractual obligations and by self-imposed organizational objectives. The
+privacy principles set out in ISO/IEC 29100 provide guidance concerning the processing of PII. NOTE6 To demonstrate conformity with the organization's obligations, some interested parties can expect that the organization is in conformity with specific standards, such as the management system specified in this document or any relevant set of specifications. These parties can call for independently audited conformity to these standards.
+
+2 Determining the scope of the privacy information management system (normative point 4.3): The organization shall determine the boundaries and applicability of the privacy information management system to establish its scope.
+When determining this scope, the organization shall consider:
+- the external and internal issues referred to in 4.1;
+- the requirements referred to in 4.2.
+The scope shall be available as documented information.
+When determining the scope of the PIMS, the organization shall include the processing of PII.
+
+3 Privacy information management system (normative point 4.4): The organization shall establish, implement, maintain and continually improve a privacy information management system, including the processes needed and their interactions, in accordance with the requirements of this document.
+
+4 Leadership and commitment (normative point 5.1): Top management shall demonstrate leadership and commitment with respect to the privacy information management system by:
+- ensuring that the privacy policy (see 5.2) and privacy objectives (see 6.2) are established and are compatible with the strategic direction of the organization;
+- ensuring the integration of the privacy information management system requirements into the organization's business processes;
+- ensuring that the resources needed for the privacy information management system are available; communicating the importance of effective privacy information management and of conforming to the privacy information management system requirements;
+- ensuring that the privacy information management system achieves its intended result(s);
+- directing and supporting persons to contribute to the effectiveness of the privacy information management system;
+- promoting continual improvement;
+- supporting other relevant roles to demonstrate their leadership as it applies to their areas of responsibility.
+NOTE Reference to “business” in this document can be interpreted broadly to mean those activities that are core to the purposes of the organization's existence.
+
+5 Privacy policy (normative point 5.2): Top management shall establish a privacy policy that:
+a) is appropriate to the purpose of the organization;
+b) provides a framework for setting privacy objectives;
+c) includes a commitment to meet applicable requirements;
+d) includes a commitment to continual improvement of the privacy information management system.
+The privacy policy shall:
+- be available as documented information;
+- be communicated within the organization;
+- be available to interested parties, as appropriate.
+
+6 Roles, responsibilities and authorities (normative point 5.3): Top management shall ensure that the responsibilities and authorities for relevant roles are assigned and communicated within the organization.
+Top management shall assign the responsibility and authority for:
+a) ensuring that the privacy information management system conforms to the requirements of this document;
+b) reporting on the performance of the privacy information management system to top management.
+
+7 Actions to address risks and opportunities (normative point 6.1): General (normative subpoint 6.1.1)
+When planning for the privacy information management system, the organization shall consider the issues referred to in 4.1 and the requirements referred to in 4.2 and determine the risks and opportunities that need to be addressed to:
+- give assurance that the privacy information management system can achieve its intended result(s);
+- prevent, or reduce, undesired effects;
+- achieve continual improvement.
+The organization shall plan:
+a) actions to address these risks and opportunities;
+b) how to
+- integrate and implement the actions into its privacy information management system processes;
+- evaluate the effectiveness of these actions.
+Privacy risk assessment (normative subpoint 6.1.2)
+The organization shall define and apply a privacy risk assessment process that: 
+a) establishes and maintains privacy risk criteria that include:
+1) the risk acceptance criteria; and
+2) criteria for performing privacy risk assessments;
+b) ensures that repeated privacy risk assessments produce consistent, valid and comparable results;
+c) identifies the privacy risks:
+1) associated with the protection of privacy and information security risks within the scope of the privacy information management system; and 
+2) physical and environmental security.
+NOTE2 ISO/IEC 27002 provides a list of possible information security controls. If the information security programme is based on ISO/IEC 27001, ISO/IEC 27002 can be consulted to ensure that no necessary information security controls are overlooked.
+d) comparing the controls, for instance, determining in b) and c) above with those in Annex A and verifying that no necessary controls have been omitted; 
+NOTE3 Annex A contains a list of possible privacy controls. Annex A can be consulted to ensure that no necessary privacy controls are overlooked.
+NOTE4 The privacy controls listed in Annex A are not exhaustive and additional privacy controls can be included if needed.
+NOTES - Organizations can address information security and privacy in an integrated manner when considering the security of PII processing, 
+e) combining information security and privacy risk assessments for example, or as separate entities with overlapping areas. producing a statement of applicability that includes:
+- the necessary controls [see b), c) and d)];
+- justification for their inclusion;
+- whether the necessary controls are implemented or not; and
+- the justification for excluding any of the controls from Annex A.
+It is not necessary to include all controls listed in Annex A. For example, controls can be excluded if they are not deemed necessary by the risk assessment or are not covered by (or are subject to exceptions under) the applicable legal requirements, including those applicable to the PII principal.
+f) formulating a privacy risk treatment plan;
+g) obtaining the privacy risk owners' approval of the privacy risk treatment plan and acceptance of the residual privacy risks; and
+h) considering the guidance from other elements, for instance, Annex B for the implementation of controls determined in b) and c). 
+The organization shall retain documented information about the privacy risk treatment process.
+
+8 Privacy objectives and planning to achieve them (normative point 6.2): The organization shall establish privacy objectives at relevant functions and levels.
+The privacy objectives shall:
+a) be consistent with the privacy policy (see 5.2);
+b) be measurable (if practicable);
+c) take into account applicable requirements;
+d) be monitored;
+e) be communicated;
+f) be updated as appropriate;
+g) be available as documented information.
+When planning how to achieve its privacy objectives, the organization shall determine:
+- what will be done;
+- what resources will be required;
+- who will be responsible;
+- when it will be completed;
+- how the results will be evaluated.
+
+9 Planning of changes (normative point 6.3): When the organization determines the need for changes to the privacy information management system, the changes shall be carried out in a planned manner.
+
+10 Resources (normative point 7.1): The organization shall determine and provide the resources needed for the establishment, implementation, maintenance and continual improvement of the privacy information management system.
+
+11 Competence (normative point 7.2): The organization shall:
+- determine the necessary competence of person(s) doing work under its control that affects its privacy information management performance;
+- ensure that these persons are competent on the basis of appropriate education, training, or experience; 
+- where applicable, take actions to acquire the necessary competence, and evaluate the effectiveness of the actions taken.
+Appropriate documented information shall be available as evidence of competence.
+NOTE Applicable actions can include, for example: the provision of training to, the mentoring of, or the reassignment of currently employed persons; or the hiring or contracting of competent persons.
+
+12 Awareness (normative point 7.3): Persons doing work under the organization's control shall be aware of:
+- the privacy policy (see 5.2);
+- their contribution to the effectiveness of the privacy information management system, including the benefits of improved privacy performance;
+- the implications of not conforming with the privacy information management system requirements.
+
+13 Communication (normative point 7.4): The organization shall determine the internal and external communications relevant to the privacy information management system including:
+- on what it will communicate;
+- when to communicate;
+- with whom to communicate;
+- how to communicate.
+ 
+14 Documented information (normative point 7.5): General (normative subpoint 7.5.1)
+The organization's privacy information management system shall include:
+a) documented information required by this document;
+b) documented information determined by the organization as being necessary for the effectiveness of the privacy information management system.
+NOTE The extent of documented information for a privacy information management system can differ from one organization to another due to:
+- the size of organization and its type of activities, processes, products and services;
+- the complexity of processes and their interactions;
+- the competence of persons.
+Creating and updating documented information (normative subpoint 7.5.2)
+When creating and updating documented information, the organization shall ensure appropriate:
+- identification and description (e.g. a title, date, author, or reference number);
+- format (e.g. language, software version, graphics) and media (e.g. paper, electronic);
+- review and approval for suitability and adequacy.
+Control of documented information (normative subpoint 7.5.3)
+Documented information required by the privacy information management system and by this document
+shall be controlled to ensure:
+a) it is available and suitable for use, where and when it is needed;
+b) it is adequately protected (e.g. from loss of confidentiality, improper use, or loss of integrity).
+For the control of documented information, the organization shall address the following activities, as
+applicable:
+- distribution, access, retrieval and use;
+- storage and preservation, including preservation of legibility;
+- control of changes (e.g. version control);
+- retention and disposition.
+Documented information of external origin determined by the organization to be necessary for the planning and operation of the privacy information management system shall be identified as appropriate, and controlled.
+NOTE Access can imply a decision regarding the permission to view the documented information only, or the permission and authority to view and change the documented information.
+
+15 Operational planning and control (normative point 8.1): The organization shall plan, implement and control the processes needed to meet requirements, and to implement the actions determined in Clause 6, by:
+- establishing criteria for the processes;
+- implementing control of the processes in accordance with the criteria.
+Documented information shall be available to the extent necessary to have confidence that the processes have been carried out as planned.
+The organization shall control planned changes and review the consequences of unintended changes, taking
+action to mitigate any adverse effects, as necessary.
+The organization shall ensure that externally provided processes, products or services that are relevant to the privacy information management system are controlled.
+
+16 Privacy risk assessment (normative point 8.2): The organization shall perform privacy risk assessments at planned intervals or when significant changes are proposed or occur, taking account of the criteria established in 6.1.2 a). 
+The organization shall retain documented information of the results of the privacy risk assessments.
+
+17 Privacy risk treatment (normative point 8.3): The organization shall implement the privacy risk treatment plan. 
+The organization shall retain documented information of the results of the privacy risk treatment.
+
+18 Monitoring, measurement, analysis and evaluation (normative point 9.1): The organization shall determine:
+- what needs to be monitored and measured;
+- the methods for monitoring, measurement, analysis and evaluation, as applicable, to ensure valid results;
+- when the monitoring and measuring shall be performed;
+- when the results from monitoring and measurement shall be analysed and evaluated.
+Documented information shall be available as evidence of the results.
+The organization shall evaluate the privacy performance and the effectiveness of the privacy information management system.
+
+19 Internal Audit (normative point 9.2): General (normative subpoint 9.2.1)
+The organization shall conduct internal audits at planned intervals to provide information on whether the privacy information management system:
+a) conforms to:
+- the organization's own requirements for its privacy information management system;
+- the requirements of this document;
+b) is effectively implemented and maintained.
+Internal audit programme (normative subpoint 9.2.2)
+The organization shall plan, establish, implement and maintain (an) audit programme(s), including the frequency, methods, responsibilities, planning requirements and reporting.
+When establishing the internal audit programme(s), the organization shall consider the importance of the processes concerned and the results of previous audits.
+The organization shall:
+a) define the audit objectives, criteria and scope for each audit;
+b) select auditors and conduct audits to ensure objectivity and the impartiality of the audit process;
+c) ensure that the results of audits are reported to relevant managers. 
+Documented information shall be available as evidence of the implementation of the audit programme(s) and the audit results.
+
+20 Management review (normative point 9.3): General (normative subpoint 9.3.1)
+Top management shall review the organization's privacy information management system, at planned intervals, to ensure its continuing suitability, adequacy and effectiveness.
+Management review inputs (normative subpoint 9.3.2)
+The management review shall include:
+a) the status of actions from previous management reviews;
+b) changes in external and internal issues that are relevant to the privacy information management system;
+c) changes in needs and expectations of interested parties that are relevant to the privacy information
+management system;
+d) information on the privacy information management system performance, including trends in:
+- nonconformities and corrective actions;
+- monitoring and measurement results;
+- audit results;
+e) opportunities for continual improvement.
+Management review results (normative subpoint 9.3.3)
+The results of the management review shall include decisions related to continual improvement opportunities
+and any need for changes to the privacy information management system.
+Documented information shall be available as evidence of the results of management reviews.
+
+21 Continual improvement (normative point 10.1): The organization shall continually improve the suitability, adequacy and effectiveness of the privacy information management system.
+
+22 Nonconformity and corrective action (normative point 10.2): When a nonconformity occurs, the organization shall:
+a) react to the nonconformity, and as applicable:
+- take action to control and correct it;
+- deal with the consequences;
+b) evaluate the need for action to eliminate the cause(s) of the nonconformity, in order that it does not recur or occur elsewhere, by:
+- reviewing the nonconformity;
+- determining the causes of the nonconformity;
+- determining if similar nonconformities exist, or can potentially occur;
+c) implement any action needed;
+d) review the effectiveness of any corrective action taken;
+e) make changes to the privacy information management system, if necessary.
+Corrective actions shall be appropriate to the effects of the nonconformities encountered.
+Documented information shall be available as evidence of:
+- the nature of the nonconformities and any subsequent actions taken;
+- the results of any corrective action.

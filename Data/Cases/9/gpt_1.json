@@ -1,0 +1,67 @@
+{
+    "id": "resp_09251279690205d4006967f6626d008190b39443b551e7356e",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 9,
+    "name_law": "Decree 1377 Colombia",
+    "alias_law": "Decree 1377",
+    "categories": [
+        {
+            "category": 1,
+            "log_prob": -0.43256
+        },
+        {
+            "category": 5,
+            "log_prob": -0.00742
+        },
+        {
+            "category": 6,
+            "log_prob": -0.00096
+        },
+        {
+            "category": 7,
+            "log_prob": -0.530123
+        },
+        {
+            "category": 10,
+            "log_prob": -0.950831
+        },
+        {
+            "category": 11,
+            "log_prob": -0.0
+        },
+        {
+            "category": 13,
+            "log_prob": -0.029753
+        },
+        {
+            "category": 14,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 15,
+            "log_prob": -0.000435
+        },
+        {
+            "category": 16,
+            "log_prob": -0.061839
+        },
+        {
+            "category": 17,
+            "log_prob": -0.000239
+        },
+        {
+            "category": 18,
+            "log_prob": -0.05708
+        },
+        {
+            "category": 21,
+            "log_prob": -0.075767
+        },
+        {
+            "category": 22,
+            "log_prob": -2e-06
+        }
+    ]
+}
