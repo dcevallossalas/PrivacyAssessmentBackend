@@ -18,38 +18,28 @@ from openai import OpenAI
 # n: Total number of categories
 def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name_law, alias_law, textNormative, textLaw, n):
     client = OpenAI(api_key = apiKey)
-    example1 = "Suppose that this is a fragment of another privacy legal framework."
-    output1 = "0,1,15,17,21"
-    example2 = "Suppose that this is a fragment of another privacy legal framework to analyze."
-    output2 = "1,5,7,16"
-
-    input_system = "You are an expert in privacy and must determine how well aligned is the privacy legal framework " + name_law + " with the standard " + name_normative + ". " \
-    "Given the text of the privacy legal framework, you must determine whether it suggests and/or compels the compliance of each one of the" + str(n) + \ 
-    " categories of subclauses defined by the standard. The categories are coded with numbers from 0 to " + str(n-1) + ". " \
-    "Just return the codes without a reason or extra text. In case of no categories selected, answer None. " \
-    "The categories of subclauses and their definitions are the following:\n" + textNormative + "\n" \
-    "Here, there are two examples of expected output structures from you when analyzing a fragment of another privacy legal framework:\n"
-     "Example 1:\n" \
-    "Text: " + example1 + "\n" \
-    "Expected output structure:" + output1 + "\n" \
-    "Example 2:\n" \
-    "Text: " + example2 + "\n" \
-    "Expected output structure:" + output2 \
+    example1 = "Suppose that this is a very long text with the privacy legal framework to analyze."
+    output1 = "0,1"
+    example2 = "Suppose that this is a very long text with the privacy legal framework to analyze."
+    output2 = "1"
+    instructions = "You are an expert in privacy and must determine how well aligned is the privacy legal framework " + name_law + "with the standard " + name_normative + "." \
+        "Given the text of the privacy legal framework you must determine whether it suggests and/or compels the compliance of each one of the " + str(n) + " categories of subclauses defined by the standard." \
+        "The categories are coded with numbers from 0 to " + str(n-1) + ". Just return the codes without a reason or extra text. In case of no categories selected, answer None." \
+        "The categories of subclauses and their definitions are the following:\n"+ textNormative + "\n" \
+        "Here, there are two examples of expected output structures from you when analyzing the privacy legal framework:\n" \
+        "Example 1:\n" \
+        "Text of privacy legal framework: " + example1 + "\n" \
+        "Expected output structure:" + output1 + "\n" \
+        "Example 2:\n" \
+        "Text of privacy legal framework: " + example2 + "\n" \
+        "Expected output structure:" + output2 \
         
-    input_user =  "The following is the text of the privacy legal framework that you must analyze:\n" + textLaw
+    inputgpt =  "The following is the text of the privacy legal framework that you must analyze:\n" + textLaw
 
     response = client.responses.create(
-        input= [
-            {
-                "role": "system",
-                "content": input_system
-            },
-            {
-                "role": "user",
-                "content": input_user
-            }
-        ],
         model="gpt-5.2",
+        instructions = instructions,
+        input= inputgpt,
         temperature=0,
         top_p=1,
         include=["message.output_text.logprobs"]
