@@ -35,7 +35,7 @@ def queryNoncompliances(apiKey, id_normative, name_normative, alias_normative, i
     + "46 subarticle 5 literal c. If all subarticles of an article cover a category, then you just specify the article (not each of the subarticles). " \
     + "Given the text of the privacy legal framework, you must determine for each one of " \
     + "the " + str(n) + " categories of subclauses defined by the standard (in a maximum of two paragraphs) the reasons why the privacy legal framework does not fulfill" \
-    + "or is not aligned in some way with each subclause.\n" \
+    + "or is not aligned in some way with each subclause. Answer in English.\n" \
     + "Here, there are two examples of expected output structures from you when analyzing a fragment of another privacy legal framework:" \
     + "Example:\n" \
     + "Text: " + example1 + "\n" \
