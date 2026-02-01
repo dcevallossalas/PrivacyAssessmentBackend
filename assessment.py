@@ -34,7 +34,7 @@ def queryGpt(apiKey, id_normative, name_normative, alias_normative, id_law, name
     "Expected output structure:" + output1 + "\n" \
     "Example 2:\n" \
     "Text: " + example2 + "\n" \
-    "Expected output structure:" + output2 \
+    "Expected output structure:" + output2
         
     input_user =  "The following is the text of the privacy legal framework that you must analyze:\n" + textLaw
 
