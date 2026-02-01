@@ -1,3 +1,12 @@
+# --------------------------------------------------------------------------------------------------------
+# A GPT-based Assessment of Privacy Legal Frameworks under ISO/IEC 27701:2025: A Latin American Case Study
+# This research is part of the project "PRIVIA: Identificación Automatizada de Brechas de Privacidad en 
+# Ecuador usando Inteligencia Artificial Generativa y LLMs" conducted by Escuela Politécnica Nacional.
+# Quito, Ecuador
+# 2026
+# --------------------------------------------------------------------------------------------------------
+
+# Required libraries
 from flask import Flask
 from flask import request
 from flask import jsonify
@@ -13,14 +22,17 @@ from noncompliances import queryNoncompliances
 
 app = Flask(__name__)
 
+# Reads configuration file
 with open("config.json", "r") as file:
     config = json.load(file)
 
+# Global configuration variables
 host = config["host"]
 user = config["user"]
 password = config["password"]
 database1 = config["database1"]
 
+# Generates the consolidated results for single, combined, and normatives analysis
 @app.route("/generatefiles", methods=["POST"])
 def generatefiles():
     try:
@@ -80,6 +92,10 @@ def generatefiles():
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
+# Generate the view content for being visualized in a form
+# myType: 0 Content for a normative | 1 Content for a law | 2 Content for a case of analysis
+# mySubtype: 0 Content for identified categories | 1 Content for compliances | 2 Content for noncompliances
+# id: Identifier of the normative, law, or case of study
 @app.route("/generateview/<int:myType>/<int:mySubtype>/<int:id>", methods=["GET"])
 def generateview(myType, mySubtype, id):
     try:
@@ -146,6 +162,7 @@ def generateview(myType, mySubtype, id):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
+# Generates a new query with GPT
 @app.route("/generatequery", methods=["POST"])
 def generatequery():
     try:
@@ -282,7 +299,7 @@ def generatequery():
             mycursor.execute("UPDATE cases SET version = %s WHERE id = %s AND active = 1",(id, idCase,))
 
             ls_categories = range(0,n)
-            getcontext().prec = 40  # enough precision
+            getcontext().prec = 40
             r = Decimal(random.random())
             num = Decimal('-100') + r * (Decimal('-10') - Decimal('-100'))
             num = num.quantize(Decimal('1.' + '0'*19))
@@ -315,6 +332,8 @@ def generatequery():
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
+# Deletes a case of analysis
+# id: Identifier of the case of analysis
 @app.route("/deletecase/<int:id>", methods=["DELETE"])
 def deletecase(id):
     try:
@@ -340,7 +359,9 @@ def deletecase(id):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
-
+# Gets the information of a case of analysis for an indicated normative and law
+# idNormative: Identifier of the normative
+# idLaw: Identififer of the law
 @app.route("/getcase/<int:idNormative>/<int:idLaw>", methods=["GET"])
 def getcase(idNormative, idLaw):
     try:
@@ -386,6 +407,7 @@ def getcase(idNormative, idLaw):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
+# Creates a new case of analysis
 @app.route("/createcase", methods=["POST"])
 def createcase():
     try:
@@ -446,7 +468,8 @@ def createcase():
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
-
+# Gets the current version of a previously create case of analysis
+# id: Identifier of the case of analysis
 @app.route("/getversion/<int:id>", methods=["GET"])
 def getversion(id):
     try:
@@ -482,7 +505,7 @@ def getversion(id):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
-
+# Gets a list with all previously created cases of analysis
 @app.route("/getcases", methods=["GET"])
 def getcases():
     try:
@@ -524,6 +547,9 @@ def getcases():
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
+# Deletes a document
+# docType 0: Gets the information of a normative | 1: Gets the information of a law
+# id: Identifier of the document
 @app.route("/deletedocument/<int:docType>/<int:id>", methods=["DELETE"])
 def deletedocument(docType, id):
     try:
@@ -559,6 +585,9 @@ def deletedocument(docType, id):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
+# Gets the information of a determined document
+# docType 0: Gets the information of a normative | 1: Gets the information of a law
+# id: Identifier of the document
 @app.route("/getdocument/<int:docType>/<int:id>", methods=["GET"])
 def getdocument(docType, id):
     try:
@@ -619,7 +648,9 @@ def getdocument(docType, id):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
-
+# Gets a list of documents corresponding to a determined type
+# docType 0: Gets a list of normatives
+# docType 1: Gests a list of laws
 @app.route("/getdocuments/<int:docType>", methods=["GET"])
 def getdocuments(docType):
     try:
@@ -660,7 +691,7 @@ def getdocuments(docType):
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
-
+# Creates a new normative based on a file attached as part of the POST operation
 @app.route("/createnormative", methods=["POST"])
 def createnormative():
     try:
@@ -772,9 +803,11 @@ def createnormative():
         if mydb is not None and mydb.is_connected():
             mydb.close()
 
+# Allows to define if the api is working
 @app.route("/test", methods=["GET"])
 def test():
     return "Api working!"
 
+# Main entrance point
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
