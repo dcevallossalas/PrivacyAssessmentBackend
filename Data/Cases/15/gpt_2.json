@@ -1,0 +1,95 @@
+{
+    "id": "resp_0ca4b0a62758b66800699f974354d08196abca472ad061375a",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 15,
+    "name_law": "California Consumer Privacy Act ",
+    "alias_law": "CCPA",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.086883
+        },
+        {
+            "category": 1,
+            "log_prob": -3e-06
+        },
+        {
+            "category": 2,
+            "log_prob": -0.395452
+        },
+        {
+            "category": 4,
+            "log_prob": -0.433637
+        },
+        {
+            "category": 5,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 6,
+            "log_prob": -1.9e-05
+        },
+        {
+            "category": 7,
+            "log_prob": -0.01852
+        },
+        {
+            "category": 8,
+            "log_prob": -0.163807
+        },
+        {
+            "category": 10,
+            "log_prob": -0.582196
+        },
+        {
+            "category": 11,
+            "log_prob": 0.0
+        },
+        {
+            "category": 12,
+            "log_prob": -0.018153
+        },
+        {
+            "category": 13,
+            "log_prob": 0.0
+        },
+        {
+            "category": 14,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 15,
+            "log_prob": -0.0
+        },
+        {
+            "category": 16,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 17,
+            "log_prob": -0.582169
+        },
+        {
+            "category": 18,
+            "log_prob": -0.000231
+        },
+        {
+            "category": 19,
+            "log_prob": -1.7e-05
+        },
+        {
+            "category": 20,
+            "log_prob": -0.000539
+        },
+        {
+            "category": 21,
+            "log_prob": -1.3e-05
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

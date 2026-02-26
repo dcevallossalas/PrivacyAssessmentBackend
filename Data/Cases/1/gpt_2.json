@@ -1,0 +1,91 @@
+{
+    "id": "resp_0a7d5269052de38300699fa17029608193b49f9d3943b3291b",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 1,
+    "name_law": "General Data Protection Regulation",
+    "alias_law": "GDPR",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.053834
+        },
+        {
+            "category": 1,
+            "log_prob": -0.001689
+        },
+        {
+            "category": 2,
+            "log_prob": -0.00239
+        },
+        {
+            "category": 4,
+            "log_prob": -0.746528
+        },
+        {
+            "category": 5,
+            "log_prob": -0.306358
+        },
+        {
+            "category": 6,
+            "log_prob": -0.000712
+        },
+        {
+            "category": 7,
+            "log_prob": -0.000521
+        },
+        {
+            "category": 10,
+            "log_prob": -0.291167
+        },
+        {
+            "category": 11,
+            "log_prob": -0.209215
+        },
+        {
+            "category": 12,
+            "log_prob": -0.126959
+        },
+        {
+            "category": 13,
+            "log_prob": -0.000117
+        },
+        {
+            "category": 14,
+            "log_prob": -5e-06
+        },
+        {
+            "category": 15,
+            "log_prob": -4.6e-05
+        },
+        {
+            "category": 16,
+            "log_prob": -0.000152
+        },
+        {
+            "category": 17,
+            "log_prob": -0.000264
+        },
+        {
+            "category": 18,
+            "log_prob": -0.0005
+        },
+        {
+            "category": 19,
+            "log_prob": -0.028405
+        },
+        {
+            "category": 20,
+            "log_prob": -0.103897
+        },
+        {
+            "category": 21,
+            "log_prob": -0.000261
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

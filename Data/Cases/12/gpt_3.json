@@ -1,0 +1,47 @@
+{
+    "id": "resp_069df0b3d431aeb100699f97a3fd6c8193963b8f39852045f3",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 12,
+    "name_law": "Law 18331 Uruguay",
+    "alias_law": "Law 18331",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.313964
+        },
+        {
+            "category": 1,
+            "log_prob": -0.027152
+        },
+        {
+            "category": 2,
+            "log_prob": -0.001517
+        },
+        {
+            "category": 5,
+            "log_prob": -0.371136
+        },
+        {
+            "category": 6,
+            "log_prob": -0.703945
+        },
+        {
+            "category": 13,
+            "log_prob": -0.38355
+        },
+        {
+            "category": 14,
+            "log_prob": -0.00016
+        },
+        {
+            "category": 15,
+            "log_prob": -3e-06
+        },
+        {
+            "category": 22,
+            "log_prob": -0.522866
+        }
+    ]
+}

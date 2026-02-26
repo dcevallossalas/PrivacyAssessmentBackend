@@ -1,0 +1,51 @@
+{
+    "id": "resp_0a65e52c77b1378600699fa23bb7b48199923e749386429ae0",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 3,
+    "name_law": "Law 21719 Chile",
+    "alias_law": "Law 21719",
+    "categories": [
+        {
+            "category": 1,
+            "log_prob": -0.083945
+        },
+        {
+            "category": 2,
+            "log_prob": -0.04262
+        },
+        {
+            "category": 7,
+            "log_prob": -0.431786
+        },
+        {
+            "category": 13,
+            "log_prob": -1.119792
+        },
+        {
+            "category": 14,
+            "log_prob": -4.4e-05
+        },
+        {
+            "category": 15,
+            "log_prob": -0.004079
+        },
+        {
+            "category": 16,
+            "log_prob": -8e-06
+        },
+        {
+            "category": 17,
+            "log_prob": -2.8e-05
+        },
+        {
+            "category": 18,
+            "log_prob": -0.611212
+        },
+        {
+            "category": 22,
+            "log_prob": -0.592586
+        }
+    ]
+}

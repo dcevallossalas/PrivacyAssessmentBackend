@@ -1,0 +1,67 @@
+{
+    "id": "resp_0ea21fa59699407500699fa305a6108198a40a6724082a1d0e",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 5,
+    "name_law": "Reglamento a la Ley Org\u00e1nica de Protecci\u00f3n de Datos Personales",
+    "alias_law": "RLOPDP",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.201476
+        },
+        {
+            "category": 1,
+            "log_prob": -0.001076
+        },
+        {
+            "category": 2,
+            "log_prob": -0.074897
+        },
+        {
+            "category": 7,
+            "log_prob": -0.19857
+        },
+        {
+            "category": 13,
+            "log_prob": -0.755765
+        },
+        {
+            "category": 14,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 15,
+            "log_prob": -5.2e-05
+        },
+        {
+            "category": 16,
+            "log_prob": -0.0
+        },
+        {
+            "category": 17,
+            "log_prob": -0.000144
+        },
+        {
+            "category": 18,
+            "log_prob": -0.132048
+        },
+        {
+            "category": 19,
+            "log_prob": -0.041017
+        },
+        {
+            "category": 20,
+            "log_prob": -0.136665
+        },
+        {
+            "category": 21,
+            "log_prob": -0.201413
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

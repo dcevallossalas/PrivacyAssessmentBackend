@@ -1,0 +1,23 @@
+{
+    "id": "resp_09097a247c99ff6e00699fa4d67a988190b0f612fa8cca1f62",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 10,
+    "name_law": "Law 29733 Per\u00fa",
+    "alias_law": "Law 29733",
+    "categories": [
+        {
+            "category": 1,
+            "log_prob": -0.313266
+        },
+        {
+            "category": 13,
+            "log_prob": -0.729181
+        },
+        {
+            "category": 15,
+            "log_prob": -0.025354
+        }
+    ]
+}

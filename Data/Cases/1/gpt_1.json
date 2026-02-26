@@ -1,0 +1,71 @@
+{
+    "id": "resp_0a4501bee43d4bad00699f9bcfbd748193b832eebd4972560c",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 1,
+    "name_law": "General Data Protection Regulation",
+    "alias_law": "GDPR",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.001231
+        },
+        {
+            "category": 1,
+            "log_prob": -3.6e-05
+        },
+        {
+            "category": 2,
+            "log_prob": -0.004323
+        },
+        {
+            "category": 7,
+            "log_prob": -1.042279
+        },
+        {
+            "category": 10,
+            "log_prob": -1.03702
+        },
+        {
+            "category": 13,
+            "log_prob": -0.105393
+        },
+        {
+            "category": 14,
+            "log_prob": -7e-06
+        },
+        {
+            "category": 15,
+            "log_prob": -0.00011
+        },
+        {
+            "category": 16,
+            "log_prob": -2.3e-05
+        },
+        {
+            "category": 17,
+            "log_prob": -4e-06
+        },
+        {
+            "category": 18,
+            "log_prob": -0.00017
+        },
+        {
+            "category": 19,
+            "log_prob": -0.178977
+        },
+        {
+            "category": 20,
+            "log_prob": -0.052473
+        },
+        {
+            "category": 21,
+            "log_prob": -3e-06
+        },
+        {
+            "category": 22,
+            "log_prob": -0.0
+        }
+    ]
+}

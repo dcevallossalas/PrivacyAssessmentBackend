@@ -1,0 +1,91 @@
+{
+    "id": "resp_0ed4707fbdd53f0c00699f9e04c9a08196af64b432ad08d703",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 6,
+    "name_law": "Ley Federal de Protecci\u00f3n de Datos Personales en Posesi\u00f3n de Particulares",
+    "alias_law": "LFPDPPP",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.474666
+        },
+        {
+            "category": 1,
+            "log_prob": -0.000648
+        },
+        {
+            "category": 2,
+            "log_prob": -0.918772
+        },
+        {
+            "category": 3,
+            "log_prob": -0.288614
+        },
+        {
+            "category": 4,
+            "log_prob": -0.014276
+        },
+        {
+            "category": 5,
+            "log_prob": -8e-06
+        },
+        {
+            "category": 6,
+            "log_prob": -0.0
+        },
+        {
+            "category": 7,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 8,
+            "log_prob": -0.024756
+        },
+        {
+            "category": 10,
+            "log_prob": -0.313262
+        },
+        {
+            "category": 11,
+            "log_prob": -3e-06
+        },
+        {
+            "category": 12,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 13,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 14,
+            "log_prob": 0.0
+        },
+        {
+            "category": 15,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 16,
+            "log_prob": -0.0
+        },
+        {
+            "category": 17,
+            "log_prob": -0.000206
+        },
+        {
+            "category": 18,
+            "log_prob": -3.5e-05
+        },
+        {
+            "category": 21,
+            "log_prob": -0.441711
+        },
+        {
+            "category": 22,
+            "log_prob": -0.0
+        }
+    ]
+}

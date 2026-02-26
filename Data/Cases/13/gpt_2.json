@@ -1,0 +1,39 @@
+{
+    "id": "resp_0b27129c8719607700699f961948ec8195927464ec1a1f2e76",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 13,
+    "name_law": "Law 25326 Argentina",
+    "alias_law": "Law 25326",
+    "categories": [
+        {
+            "category": 7,
+            "log_prob": -0.281585
+        },
+        {
+            "category": 13,
+            "log_prob": -0.159473
+        },
+        {
+            "category": 14,
+            "log_prob": -0.000261
+        },
+        {
+            "category": 15,
+            "log_prob": 0.0
+        },
+        {
+            "category": 16,
+            "log_prob": -0.016424
+        },
+        {
+            "category": 17,
+            "log_prob": -0.000112
+        },
+        {
+            "category": 22,
+            "log_prob": -0.582087
+        }
+    ]
+}

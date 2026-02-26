@@ -1,0 +1,55 @@
+{
+    "id": "resp_06ee9c130281ff8400699fa1de0170819ba757ac0e7a37cbc1",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 2,
+    "name_law": "Law 7593/25 Paraguay",
+    "alias_law": "Law 7593 25",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.160398
+        },
+        {
+            "category": 1,
+            "log_prob": -0.009286
+        },
+        {
+            "category": 2,
+            "log_prob": -0.001267
+        },
+        {
+            "category": 6,
+            "log_prob": -0.275337
+        },
+        {
+            "category": 7,
+            "log_prob": -1.3e-05
+        },
+        {
+            "category": 13,
+            "log_prob": -0.599977
+        },
+        {
+            "category": 15,
+            "log_prob": -0.281624
+        },
+        {
+            "category": 16,
+            "log_prob": -4.4e-05
+        },
+        {
+            "category": 17,
+            "log_prob": -0.001278
+        },
+        {
+            "category": 18,
+            "log_prob": -6e-06
+        },
+        {
+            "category": 22,
+            "log_prob": -0.045039
+        }
+    ]
+}

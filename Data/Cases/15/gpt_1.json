@@ -1,0 +1,83 @@
+{
+    "id": "resp_0e2b7e238cb46ce600699f95441c74819bb7156d379393117c",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 15,
+    "name_law": "California Consumer Privacy Act ",
+    "alias_law": "CCPA",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.008737
+        },
+        {
+            "category": 1,
+            "log_prob": -5.4e-05
+        },
+        {
+            "category": 2,
+            "log_prob": -0.043156
+        },
+        {
+            "category": 5,
+            "log_prob": -0.654385
+        },
+        {
+            "category": 7,
+            "log_prob": -0.109693
+        },
+        {
+            "category": 8,
+            "log_prob": -0.650276
+        },
+        {
+            "category": 11,
+            "log_prob": -0.172308
+        },
+        {
+            "category": 12,
+            "log_prob": -4e-05
+        },
+        {
+            "category": 13,
+            "log_prob": -0.0
+        },
+        {
+            "category": 14,
+            "log_prob": 0.0
+        },
+        {
+            "category": 15,
+            "log_prob": -3.3e-05
+        },
+        {
+            "category": 16,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 17,
+            "log_prob": -0.12784
+        },
+        {
+            "category": 18,
+            "log_prob": -5e-06
+        },
+        {
+            "category": 19,
+            "log_prob": -0.000269
+        },
+        {
+            "category": 20,
+            "log_prob": -0.007697
+        },
+        {
+            "category": 21,
+            "log_prob": -5.8e-05
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

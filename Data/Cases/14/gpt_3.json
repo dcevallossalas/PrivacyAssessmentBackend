@@ -1,0 +1,75 @@
+{
+    "id": "resp_0ac4771bbcfc4d5600699f98448ec881998b99efcc21864224",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 14,
+    "name_law": "Brazilian Data Protection Law",
+    "alias_law": "LGPD - Law 13709",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.008615
+        },
+        {
+            "category": 1,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 6,
+            "log_prob": -0.314458
+        },
+        {
+            "category": 7,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 10,
+            "log_prob": -0.689968
+        },
+        {
+            "category": 11,
+            "log_prob": -0.196738
+        },
+        {
+            "category": 12,
+            "log_prob": -0.006716
+        },
+        {
+            "category": 13,
+            "log_prob": 0.0
+        },
+        {
+            "category": 14,
+            "log_prob": 0.0
+        },
+        {
+            "category": 15,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 16,
+            "log_prob": -2e-06
+        },
+        {
+            "category": 17,
+            "log_prob": -0.000161
+        },
+        {
+            "category": 18,
+            "log_prob": -0.002161
+        },
+        {
+            "category": 19,
+            "log_prob": -0.615919
+        },
+        {
+            "category": 21,
+            "log_prob": -0.50343
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}

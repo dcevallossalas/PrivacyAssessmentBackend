@@ -1,0 +1,59 @@
+{
+    "id": "resp_0632128aaafb6a9600699fa01ab86c8197ae17a1558586383e",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 11,
+    "name_law": "Supreme Decree 016-2024-JUS Per\u00fa",
+    "alias_law": "Supreme Decree 016-2024-JUS",
+    "categories": [
+        {
+            "category": 1,
+            "log_prob": -0.160517
+        },
+        {
+            "category": 5,
+            "log_prob": -0.525172
+        },
+        {
+            "category": 6,
+            "log_prob": -0.003156
+        },
+        {
+            "category": 7,
+            "log_prob": -0.096819
+        },
+        {
+            "category": 13,
+            "log_prob": -0.411976
+        },
+        {
+            "category": 14,
+            "log_prob": -2.2e-05
+        },
+        {
+            "category": 15,
+            "log_prob": -0.000188
+        },
+        {
+            "category": 16,
+            "log_prob": -0.000393
+        },
+        {
+            "category": 17,
+            "log_prob": -0.011254
+        },
+        {
+            "category": 18,
+            "log_prob": -0.055861
+        },
+        {
+            "category": 19,
+            "log_prob": -0.217352
+        },
+        {
+            "category": 22,
+            "log_prob": -0.171838
+        }
+    ]
+}

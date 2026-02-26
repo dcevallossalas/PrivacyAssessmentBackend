@@ -1,0 +1,91 @@
+{
+    "id": "resp_0c9726b0e13f79fc00699f9d2285f8819aa7e21265056e1dbe",
+    "id_normative": 1,
+    "name_normative": "ISO/IEC 27701:2025 Standard",
+    "alias_normative": "ISO IEC 27701",
+    "id_law": 4,
+    "name_law": "Ley Org\u00e1nica de Protecci\u00f3n de Datos Personales",
+    "alias_law": "LOPDP",
+    "categories": [
+        {
+            "category": 0,
+            "log_prob": -0.07889
+        },
+        {
+            "category": 1,
+            "log_prob": 0.0
+        },
+        {
+            "category": 2,
+            "log_prob": -0.024897
+        },
+        {
+            "category": 3,
+            "log_prob": -0.786239
+        },
+        {
+            "category": 5,
+            "log_prob": -0.501287
+        },
+        {
+            "category": 6,
+            "log_prob": -0.100253
+        },
+        {
+            "category": 7,
+            "log_prob": -0.000193
+        },
+        {
+            "category": 8,
+            "log_prob": -0.722033
+        },
+        {
+            "category": 10,
+            "log_prob": -0.257276
+        },
+        {
+            "category": 11,
+            "log_prob": -0.021327
+        },
+        {
+            "category": 12,
+            "log_prob": -0.029757
+        },
+        {
+            "category": 13,
+            "log_prob": -0.0
+        },
+        {
+            "category": 14,
+            "log_prob": -1.2e-05
+        },
+        {
+            "category": 15,
+            "log_prob": -4e-06
+        },
+        {
+            "category": 16,
+            "log_prob": -2.2e-05
+        },
+        {
+            "category": 17,
+            "log_prob": -0.00121
+        },
+        {
+            "category": 18,
+            "log_prob": -1e-06
+        },
+        {
+            "category": 19,
+            "log_prob": -0.00315
+        },
+        {
+            "category": 21,
+            "log_prob": -0.213257
+        },
+        {
+            "category": 22,
+            "log_prob": 0.0
+        }
+    ]
+}
