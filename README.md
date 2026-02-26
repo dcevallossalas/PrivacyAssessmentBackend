@@ -30,5 +30,5 @@ Configure the configuration file config.json according to the following criteria
 Run a new container of the built image mapping a local port to port 80 (e.g., port 8080 of local host to port 80 of docker) and the folder where the .py files are located with the home of docker alpine (e.g., folder /home/privacy/PrivacyAssessmentBackend of local host to folder /home/alpine of docker):
 
 ```{r}
-sudo docker run -p 8080:80 -v /home/privacy/PrivacyAssessmentBackend:/home/alpine assessment
+sudo docker run -p 8090:80 -v /home/privacy/PrivacyAssessmentBackend:/home/alpine assessment
 ```
