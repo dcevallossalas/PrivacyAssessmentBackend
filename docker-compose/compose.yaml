@@ -1,0 +1,8 @@
+name: ISO27701
+services:
+    assessment:
+        ports:
+            - 8090:80
+        volumes:
+            - /home/privacy/PrivacyAssessmentBackend:/home/alpine
+        image: assessment

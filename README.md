@@ -32,3 +32,11 @@ Run a new container of the built image mapping a local port to port 80 (e.g., po
 ```{r}
 sudo docker run -p 8090:80 -v /home/privacy/PrivacyAssessmentBackend:/home/alpine assessment
 ```
+
+Or if you prefer, use the docker compose file localted in the docker-compose folder.
+
+
+```{r}
+cd /home/privacy/PrivacyAssessmentBackend/docker-compose
+sudo docker compose up
+```
