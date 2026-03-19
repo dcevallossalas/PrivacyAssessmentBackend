@@ -23,7 +23,7 @@ sudo docker build -t assessment .
 Configure the configuration file config.json according to the following criteria:
 
 - host: IP address or domain name to reach the database. 
-- user: User with enough privileges
+- user: User with enough privileges.
 - password: Password of the database.
 - database1: Name of the schema.
 
