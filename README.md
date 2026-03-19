@@ -1,6 +1,6 @@
-# A GPT-based Assessment of Privacy Legal Frameworks under ISO/IEC 27701:2025: A Latin American Case Study
+# A GPT-Based Assessment of Alignment Between Privacy Legal Frameworks & ISO/IEC 27701:2025: A Latin American Case Study
 
-This repository provides all the files and elements required for experiments reproducibility of the backend component of the research project: "A GPT-based Assessment of Privacy Legal Frameworks under ISO/IEC 27701:2025: A Latin American Case Study".
+This repository provides all the files and elements required for experiments reproducibility of the backend component of the research project: "A GPT-Based Assessment of Alignment Between Privacy Legal Frameworks & ISO/IEC 27701:2025: A Latin American Case Study".
 
 This research is part of the project "PRIVIA: Identificación Automatizada de Brechas de Privacidad en Ecuador usando Inteligencia Artificial Generativa y LLMs" conducted by Escuela Politécnica Nacional.
 
